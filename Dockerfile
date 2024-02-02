@@ -1,6 +1,6 @@
 # Node serves as the runtime environment for JavaScript, hence we use it as our base image.
 FROM node:20 AS base
-RUN apk update && apk add --no-cache libc6-compat
+RUN apk-get update && apk-get add --no-cache libc6-compat
 RUN corepack enable && corepack prepare pnpm@8.7.6 --activate 
 
 # We set /app as the working directory within the container
