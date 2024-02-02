@@ -1,15 +1,10 @@
 # Node serves as the runtime environment for JavaScript, hence we use it as our base image.
-FROM node:20-alpine AS base
+FROM node:21 AS base
  
 FROM base AS deps
  
 RUN corepack enable
-RUN apk update
-RUN apk add g++
-RUN apk add make
-RUN apk add cmake
-RUN apk add libressl-dev
-RUN apk add git
+
 
 # We set /app as the working directory within the container
 WORKDIR /app
