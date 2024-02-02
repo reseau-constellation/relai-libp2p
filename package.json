@@ -36,7 +36,6 @@
     "@libp2p/identify": "^1.0.12",
     "@libp2p/peer-id-factory": "^4.0.5",
     "@libp2p/websockets": "^8.0.13",
-    "@multiformats/multiaddr": "^12.1.14",
     "@multiformats/multiaddr-matcher": "^1.1.2",
     "@orbitdb/feed-db": "^1.0.0",
     "@types/compression": "^1.7.5",
