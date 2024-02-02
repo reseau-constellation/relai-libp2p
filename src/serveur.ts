@@ -24,5 +24,5 @@ app.get("/adresses", async (_request, response) => {
   response.send(adresses);
 });
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 app.listen(port);
