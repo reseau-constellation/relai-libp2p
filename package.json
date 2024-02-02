@@ -15,8 +15,8 @@
     "test": "pnpm test:node && pnpm test:navig",
     "formatter": "pnpm prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\" && pnpm eslint --ext .js,.ts src",
     "versioner": "pnpm genversion  --es6 --semi src/version.ts",
-    "lancer": "pnpm compiler && lancer:prod",
-    "lancer:prod": "node --env-file=.env dist/serveur.js"
+    "lancer": "pnpm compiler && node --env-file=.env dist/serveur.js",
+    "lancer:prod": "node dist/serveur.js"
   },
   "watch": {
     "build": {
