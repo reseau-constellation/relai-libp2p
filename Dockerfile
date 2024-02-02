@@ -1,43 +1,22 @@
 # Node serves as the runtime environment for JavaScript, hence we use it as our base image.
 FROM node:21 AS base
- 
-FROM base AS deps
- 
-RUN corepack enable
-
-
-# We set /app as the working directory within the container
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+COPY . /app
 WORKDIR /app
 
-# We copy package.json and package-lock.json into the /app directory in the container
-COPY package.json pnpm-lock.yaml ./
-RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm fetch --frozen-lockfile
-RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --prod
- 
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+
 FROM base AS build
-
-RUN corepack enable
-WORKDIR /app
-
-COPY package.json pnpm-lock.yaml ./
-RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm fetch --frozen-lockfile
-RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile
-
-# The rest of the code is copied into the container
-COPY . .
-
-RUN pnpm install node-pre-gyp -g
-RUN pnpm compiler
-
-# Port 3000 is exposed to enable access from outside
-EXPOSE 3000
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm run compiler
 
 FROM base
- 
-WORKDIR /app
-COPY --from=deps /app/node_modules /app/node_modules
+COPY --from=prod-deps /app/node_modules /app/node_modules
 COPY --from=build /app/dist /app/dist
 ENV NODE_ENV production
+EXPOSE 3000
 
 # The command required to run the app is specified
-CMD [ "node", "--env-file=.env", "dist/serveur.js" ]
+CMD [ "pnpm", "lancer:prod" ]
