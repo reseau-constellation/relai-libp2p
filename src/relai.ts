@@ -3,6 +3,9 @@ import { yamux } from "@chainsafe/libp2p-yamux";
 import { circuitRelayServer } from "@libp2p/circuit-relay-v2";
 import { identify } from "@libp2p/identify";
 import { webSockets } from "@libp2p/websockets";
+import { webRTC, webRTCDirect } from "@libp2p/webrtc";
+import { webTransport } from "@libp2p/webtransport";
+import { tcp } from "@libp2p/tcp";
 import { unmarshalPrivateKey } from "@libp2p/crypto/keys";
 import { createFromPrivKey } from "@libp2p/peer-id-factory";
 import { createLibp2p } from "libp2p";
@@ -37,7 +40,7 @@ export const créerNœud = async () => {
       // TODO check "What is next?" section
       // announce: ['/dns4/auto-relay.libp2p.io/tcp/443/wss/p2p/QmWDn2LY8nannvSWJzruUYoLZ4vV83vfCBwd8DipvdgQc3']
     },
-    transports: [webSockets()],
+    transports: [webSockets(), webRTC(), webRTCDirect(), webTransport(), tcp()],
     connectionEncryption: [noise()],
     streamMuxers: [yamux()],
     services: {

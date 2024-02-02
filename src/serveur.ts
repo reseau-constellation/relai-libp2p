@@ -5,8 +5,6 @@ import compression from "compression";
 
 import { créerNœud, obtAdressesNœud } from "./relai.js";
 
-const __dirname = import.meta.dirname;
-
 const app = express();
 
 app.use(compression());

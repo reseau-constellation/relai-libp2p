@@ -14,6 +14,15 @@ dependencies:
   '@libp2p/mplex':
     specifier: ^10.0.13
     version: 10.0.13
+  '@libp2p/tcp':
+    specifier: ^9.0.13
+    version: 9.0.13
+  '@libp2p/webrtc':
+    specifier: ^4.0.17
+    version: 4.0.17(react-native@0.73.3)
+  '@libp2p/webtransport':
+    specifier: ^4.0.17
+    version: 4.0.17
   blockstore-core:
     specifier: ^4.3.10
     version: 4.3.10
@@ -1699,8 +1708,6 @@ packages:
       uint8arraylist: 2.4.8
       uint8arrays: 5.0.1
       wherearewe: 2.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   /@chainsafe/libp2p-yamux@6.0.1:
     resolution: {integrity: sha512-8ar6jph9ZuUUxQ8t8W1MaZqH7f7KvGK2wR7TDGnN0r4QtZc07ICNgVjnolnI9/8bclrI5Um4uMa8QCYKTrdvDQ==}
@@ -2265,8 +2272,6 @@ packages:
       protons-runtime: 5.4.0
       uint8arraylist: 2.4.8
       uint8arrays: 5.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   /@libp2p/dcutr@1.0.10:
     resolution: {integrity: sha512-DFI1ZJ8w6KtFyeum3mWomRrrQif6QYkF5q9SEyT9yCfYjLwGKxjBZngV6MAWEPjQsmNRmidiqpAJcikzfcMXMw==}
@@ -2810,8 +2815,6 @@ packages:
       multiformats: 13.0.1
       sanitize-filename: 1.6.3
       uint8arrays: 5.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   /@libp2p/logger@2.1.1:
     resolution: {integrity: sha512-2UbzDPctg3cPupF6jrv6abQnAUTrbLybNOj0rmmrdGm1cN2HJ1o/hBu0sXuq4KF9P1h/eVRn1HIRbVIEKnEJrA==}
@@ -3009,8 +3012,6 @@ packages:
       protons-runtime: 5.4.0
       uint8arraylist: 2.4.8
       uint8arrays: 5.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   /@libp2p/peer-id@2.0.4:
     resolution: {integrity: sha512-gcOsN8Fbhj6izIK+ejiWsqiqKeJ2yWPapi/m55VjOvDa52/ptQzZszxQP8jUk93u36de92ATFXDfZR/Bi6eeUQ==}

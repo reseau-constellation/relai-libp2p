@@ -25,8 +25,8 @@
     <img src="https://raw.githubusercontent.com/libp2p/libp2p/master/logo/white-bg-1.png" alt="Libp2p Logo" width="128" />
     <h2>Ceci est un nœud de relai libp2p</h2>
     <p>Ce point de relai vous permet de faciliter la découverte et la connection des pairs<br>sur navigateur du réseau libp2p.</p>
-    <div id="adr"></div>
-    <a href="https://github.com/libp2p/js-libp2p-example-circuit-relay#readme"> » En apprendre plus</a>
+    <div id="adr"><p>En attente des adresses...</p></div>
+    <p><a href="https://github.com/libp2p/js-libp2p-example-circuit-relay#readme"> » En savoir plus</a></p>
   </center>
 </body>
 <script>
@@ -37,7 +37,17 @@ const obtAdresses = async () => {
 }
 obtAdresses().then(
   (adresses) => {
-    document.getElementById('adr').innerHTML = 'You can add this signaling-server with the address <tt>' + adresses + '</tt>'
+    const https = window.location.protocol === "https:"
+    const adressesPubliques = adresses.filter(a=>!a.startsWith("/ip4/127.0.0.1")).map(
+      a => https ? a.replace("/ws/", "/wss/") : a
+    )
+    document.getElementById('adr').innerHTML = `<p>Vous pouvez inclure ce point de relai dans vos applis avec la configuration libp2p suivante :
+</p><code>peerDiscovery: [
+\nbootstrap({
+  \nlist: ${JSON.stringify(adressesPubliques, undefined, 2)},
+  \n}),
+\n],
+</code>` // 'You can add this signaling-server with the address <tt>' + adresses + '</tt>'
   }
 )
 </script>
