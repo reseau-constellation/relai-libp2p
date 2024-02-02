@@ -1,5 +1,5 @@
 # Node serves as the runtime environment for JavaScript, hence we use it as our base image.
-FROM node:20 AS base
+FROM node:20-alpine AS base
  
 FROM base AS deps
  
