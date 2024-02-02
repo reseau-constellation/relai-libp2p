@@ -4,6 +4,7 @@ FROM node:20-alpine AS base
 FROM base AS deps
  
 RUN corepack enable
+RUN apk add g++
 
 # We set /app as the working directory within the container
 WORKDIR /app
