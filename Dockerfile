@@ -8,7 +8,7 @@ RUN apk update
 RUN apk add g++
 RUN apk add make
 RUN apk add cmake
-RUN apk add openssl
+RUN apk add libressl-dev
 
 # We set /app as the working directory within the container
 WORKDIR /app
