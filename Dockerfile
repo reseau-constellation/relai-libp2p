@@ -17,7 +17,7 @@ FROM base
 COPY --from=prod-deps /app/node_modules /app/node_modules
 COPY --from=build /app/dist /app/dist
 ENV NODE_ENV production
-EXPOSE 3000
+EXPOSE 80000
 
 # The command required to run the app is specified
 CMD [ "pnpm", "lancer:prod" ]
