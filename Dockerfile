@@ -8,7 +8,7 @@ RUN apk update
 RUN apk add g++
 RUN apk add make
 RUN apk add cmake
-RUN apk add openssl-dev
+RUN apk add libressl-dev
 RUN apk add git
 
 # We set /app as the working directory within the container
@@ -25,13 +25,13 @@ RUN corepack enable
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
+RUN pnpm install node-pre-gyp -g
 RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm fetch --frozen-lockfile
 RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile
 
 # The rest of the code is copied into the container
 COPY . .
 
-RUN pnpm install node-pre-gyp -g
 RUN pnpm compiler
 
 # Port 3000 is exposed to enable access from outside
