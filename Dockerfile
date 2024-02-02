@@ -6,6 +6,7 @@ FROM base AS deps
 RUN corepack enable
 RUN apk update
 RUN apk add g++
+RUN apk add make
 RUN apk add cmake
 
 # We set /app as the working directory within the container
