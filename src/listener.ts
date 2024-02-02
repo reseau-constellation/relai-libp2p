@@ -3,7 +3,6 @@ import { yamux } from "@chainsafe/libp2p-yamux";
 import { circuitRelayTransport } from "@libp2p/circuit-relay-v2";
 import { identify } from "@libp2p/identify";
 import { webSockets } from "@libp2p/websockets";
-import { multiaddr } from "@multiformats/multiaddr";
 import { createLibp2p } from "libp2p";
 
 const relayAddr = process.argv[2];
@@ -33,7 +32,7 @@ const conn = await node.dial(relayAddr);
 console.log(`Connected to the relay ${conn.remotePeer.toString()}`);
 
 // Wait for connection and relay to be bind for the example purpose
-node.addEventListener("self:peer:update", (evt) => {
+node.addEventListener("self:peer:update", (_evt) => {
   // Updated self multiaddrs?
   console.log(
     `Advertising with a relay address of ${node.getMultiaddrs()[0].toString()}`,

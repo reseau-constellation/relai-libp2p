@@ -18,10 +18,10 @@ if (process.env.NODE_ENV === "production") {
 }
 const nœud = await créerNœud();
 obtAdressesNœud(nœud);
-app.get("*", (request, response) => {
+app.get("/", (_request, response) => {
   response.sendFile(path.join("src", "index.html"), { root: "." });
 });
-app.get("/adresses", async (request, response) => {
+app.get("/adresses", async (_request, response) => {
   const adresses = obtAdressesNœud(nœud);
   response.send(adresses);
 });

@@ -25,7 +25,19 @@
     <img src="https://raw.githubusercontent.com/libp2p/libp2p/master/logo/white-bg-1.png" alt="Libp2p Logo" width="128" />
     <h2>Ceci est un nœud de relai libp2p</h2>
     <p>Ce point de relai vous permet de faciliter la découverte et la connection des pairs<br>sur navigateur du réseau libp2p.</p>
-    <div id="addr"></div>
+    <div id="adr"></div>
     <a href="https://github.com/libp2p/js-libp2p-example-circuit-relay#readme"> » En apprendre plus</a>
   </center>
 </body>
+<script>
+const obtAdresses = async () => {
+  const réponse = await fetch("/adresses");
+  const adresses = await réponse.json();
+  return adresses
+}
+obtAdresses().then(
+  (adresses) => {
+    document.getElementById('adr').innerHTML = 'You can add this signaling-server with the address <tt>' + adresses + '</tt>'
+  }
+)
+</script>
