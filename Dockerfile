@@ -1,22 +1,39 @@
 # Node serves as the runtime environment for JavaScript, hence we use it as our base image.
 FROM node:20 AS base
-RUN apk-get update && apk-get add --no-cache libc6-compat
-RUN corepack enable && corepack prepare pnpm@8.7.6 --activate 
+ 
+FROM base AS deps
+ 
+RUN corepack enable
 
 # We set /app as the working directory within the container
 WORKDIR /app
 
 # We copy package.json and package-lock.json into the /app directory in the container
-COPY package*.json ./
-
-# The dependencies are installed in the container
-RUN pnpm install
+COPY package.json pnpm-lock.yaml ./
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm fetch --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --prod
+ 
+FROM base AS build
+RUN corepack enable
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm fetch --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile
 
 # The rest of the code is copied into the container
 COPY . .
 
+RUN pnpm compiler
+
 # Port 3000 is exposed to enable access from outside
 EXPOSE 3000
 
+FROM base
+ 
+WORKDIR /app
+COPY --from=deps /app/node_modules /app/node_modules
+COPY --from=build /app/dist /app/dist
+ENV NODE_ENV production
+
 # The command required to run the app is specified
-CMD [ "pnpm", "lancer" ]
+CMD [ "node", "--env-file=.env", "dist/serveur.js" ]
