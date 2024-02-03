@@ -36,7 +36,7 @@ export const créerNœud = async () => {
   const nœud = await createLibp2p({
     peerId,
     addresses: {
-      listen: ["/ip4/0.0.0.0/tcp/0/ws"],
+      listen: ["/ip4/0.0.0.0/tcp/53321/ws"],
       // TODO check "What is next?" section
       // announce: ['/dns4/auto-relay.libp2p.io/tcp/443/wss/p2p/QmWDn2LY8nannvSWJzruUYoLZ4vV83vfCBwd8DipvdgQc3']
     },
