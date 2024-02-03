@@ -53,6 +53,9 @@ export const créerNœud = async () => {
     console.log(uint8ArrayToString(nœud.peerId!.privateKey!, "hex"));
     fs.writeFileSync(".env", `CLEF_PRIVEE_RELAI=${clefPrivéeRelai}`);
   }
+  nœud.addEventListener("peer:discovery", () => {
+    console.log("Pairs: ", nœud.getPeers());
+  });
   return nœud;
 };
 
