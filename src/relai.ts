@@ -1,3 +1,5 @@
+import type { PeerId, Libp2p } from "@libp2p/interface";
+
 import { noise } from "@chainsafe/libp2p-noise";
 import { yamux } from "@chainsafe/libp2p-yamux";
 import { circuitRelayServer } from "@libp2p/circuit-relay-v2";
@@ -9,7 +11,6 @@ import { tcp } from "@libp2p/tcp";
 import { unmarshalPrivateKey } from "@libp2p/crypto/keys";
 import { createFromPrivKey } from "@libp2p/peer-id-factory";
 import { createLibp2p } from "libp2p";
-import { PeerId, Libp2p } from "@libp2p/interface";
 import {
   fromString as uint8ArrayFromString,
   toString as uint8ArrayToString,
@@ -62,9 +63,9 @@ export const créerNœud = async () => {
 };
 
 export const obtAdressesNœud = (nœud: Libp2p): string[] => {
-  console.log(`Node started with id ${nœud.peerId.toString()}`);
+  console.log(`Nœud lancé avec id : ${nœud.peerId.toString()}`);
   console.log(
-    "Listening on: ",
+    "Le nœud écoute sur : ",
     nœud.getMultiaddrs().map((ma) => ma.toString()),
   );
   return nœud.getMultiaddrs().map((ma) => ma.toString());
