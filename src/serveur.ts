@@ -6,7 +6,7 @@ import compression from "compression";
 import { créerNœud, obtAdressesNœud } from "./relai.js";
 
 const nœud = await créerNœud();
-obtAdressesNœud(nœud);
+const adresses = obtAdressesNœud(nœud);
 
 const app = express();
 
@@ -22,7 +22,6 @@ app.get("/", (_request, response) => {
   response.sendFile(path.join("src", "index.html"), { root: "." });
 });
 app.get("/adresses", async (_request, response) => {
-  const adresses = obtAdressesNœud(nœud);
   response.send(adresses);
 });
 
