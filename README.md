@@ -12,7 +12,7 @@ pnpm install
 Pour déployer votre propre serveur relai, suivre les instructions suivantes :
 
 ### Choisissez un fournisseur
-Vous devrez choisir un fournisseur d'hébergement. Back4App Containers offre des options gratuites qui sont suffisamment puissantes pour ce relai. Heroku offre également des options payantes.
+Vous devrez choisir un fournisseur d'hébergement. [Back4App Containers](https://www.back4app.com/docs-containers) offre des options gratuites qui sont suffisamment puissantes pour ce relai. [Heroku](https://devcenter.heroku.com/articles/github-integration) offre également des options payantes.
 
 Créez votre compte sur le site de votre fournisseur, puis choisissez de créer une nouvelle application avec l'addresse GitHub de la fourche de ce projet que vous avez créée ci-dessus.
 
