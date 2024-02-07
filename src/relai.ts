@@ -16,13 +16,14 @@ import {
 } from "uint8arrays";
 import fs from "fs";
 
-export const obtClefPrivéeRelai = async (): Promise<PeerId | undefined> => {
-  // output of: console.log(server.peerId.privateKey.toString('hex'))
-  // "08011240821cb6bc3d4547fcccb513e82e4d718089f8a166b23ffcd4a436754b6b0774cf07447d1693cd10ce11ef950d7517bad6e9472b41a927cd17fc3fb23f8c70cd99"
+export const obtIdPairRelai = async (): Promise<PeerId | undefined> => {
+  // Clef privée obtenue avec: console.log(server.peerId.privateKey.toString('hex'))
+  // exemple : "08011240821cb6bc3d4547fcccb513e82e4d718089f8a166b23ffcd4a436754b6b0774cf07447d1693cd10ce11ef950d7517bad6e9472b41a927cd17fc3fb23f8c70cd99"
   const relayPrivKey = process.env.CLEF_PRIVEE_RELAI;
+  
   if (relayPrivKey) {
-    // the peer id of the above key
-    // const relayId = '12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE'
+    // L'identité de pair qui correspond à la clef privée ci-dessus
+    // exemple : '12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE'
     const encoded = uint8ArrayFromString(relayPrivKey, "hex");
     const privateKey = await unmarshalPrivateKey(encoded);
     const peerId = await createFromPrivKey(privateKey);
@@ -32,13 +33,15 @@ export const obtClefPrivéeRelai = async (): Promise<PeerId | undefined> => {
 };
 
 export const créerNœud = async () => {
-  const peerId = await obtClefPrivéeRelai();
+  const peerId = await obtIdPairRelai();
+  const domaine = process.env.DOMAINE;
   const nœud = await createLibp2p({
     peerId,
     addresses: {
-      listen: ["/ip4/0.0.0.0/tcp/53321/ws"],
-      // TODO check "What is next?" section
-      // announce: ['/dns4/auto-relay.libp2p.io/tcp/443/wss/p2p/QmWDn2LY8nannvSWJzruUYoLZ4vV83vfCBwd8DipvdgQc3']
+      listen: ["/ip4/0.0.0.0/tcp/0/ws"],
+      announce: domaine
+        ? [`/dns4/${domaine}/tcp/443/wss/p2p/${peerId?.toString()}`]
+        : undefined,
     },
     transports: [webSockets(), webRTC(), webRTCDirect(), webTransport(), tcp()],
     connectionEncryption: [noise()],
@@ -50,7 +53,6 @@ export const créerNœud = async () => {
   });
   if (!peerId) {
     const clefPrivéeRelai = uint8ArrayToString(nœud.peerId!.privateKey!, "hex");
-    console.log(uint8ArrayToString(nœud.peerId!.privateKey!, "hex"));
     fs.writeFileSync(".env", `CLEF_PRIVEE_RELAI=${clefPrivéeRelai}`);
   }
   nœud.addEventListener("peer:discovery", () => {
