@@ -42,9 +42,9 @@ export const créerNœud = async () => {
       listen: ["/ip4/0.0.0.0/tcp/0/ws"],
       announce: domaine
         ? [
-          `/dns4/${domaine}/tcp/443/wss/p2p/${peerId?.toString()}`,
-          `/dns4/${domaine}/tcp/80/ws/p2p/${peerId?.toString()}`
-        ]
+            `/dns4/${domaine}/tcp/443/wss/p2p/${peerId?.toString()}`,
+            `/dns4/${domaine}/tcp/80/ws/p2p/${peerId?.toString()}`,
+          ]
         : undefined,
     },
     transports: [webSockets(), webRTC(), webRTCDirect(), webTransport(), tcp()],
@@ -71,12 +71,6 @@ export const obtAdressesNœud = (nœud: Libp2p): string[] => {
     "Le nœud écoute sur : ",
     nœud.getMultiaddrs().map((ma) => ma.toString()),
   );
-  setInterval(() => {
-    console.log(
-      "Le nœud écoute sur : ",
-      nœud.getMultiaddrs().map((ma) => ma.toString()),
-    );
-  }, 10000)
   return nœud.getMultiaddrs().map((ma) => ma.toString());
-  // generates a deterministic address: /ip4/127.0.0.1/tcp/33519/ws/p2p/12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE
+  // génère une adresse de manière déterministe : /ip4/127.0.0.1/tcp/33519/ws/p2p/12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE
 };
