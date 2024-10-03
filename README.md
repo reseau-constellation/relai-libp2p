@@ -24,6 +24,14 @@ Créez votre compte sur le site de votre fournisseur, puis choisissez de créer 
 1. Choisissez un nom de domaine pour votre serveur relai. Ceci peut être un nom par défaut de votre fournisseur (p. ex., monprojet.b4a.run ou monprojet.herokuapp.com) ou bien votre propre domaine.
 2. Copiez ce nom de domaine dans une variable d'environnement nommée `DOMAINE` sur votre fournisseur d'hébergement.
 
-
 ## Crédits
 Beaucoup du code provient originalement de https://github.com/libp2p/js-libp2p-example-circuit-relay.
+
+# 
+https://docs.digitalocean.com/products/droplets/getting-started/recommended-droplet-setup/
+
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04
+
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04#step-5-%E2%80%93-setting-up-server-blocks-(recommended)
+
+https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04
