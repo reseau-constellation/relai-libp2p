@@ -132,5 +132,5 @@ export const obtAdressesNœud = (nœud: Libp2p): string[] => {
     nœud.getMultiaddrs().map((ma) => ma.toString()),
   );
   return nœud.getMultiaddrs().map((ma) => ma.toString());
-  // génère une adresse de manière déterministe : /ip4/127.0.0.1/tcp/33519/ws/p2p/12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE
+  // génère une adresse de manière déterministe : /ip4/127.0.0.1/tcp/12345/ws/p2p/12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE
 };
