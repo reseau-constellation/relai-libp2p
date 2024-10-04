@@ -46,9 +46,7 @@ const obtAdresses = async () => {
 obtAdresses().then(
   (adresses) => {
     const https = window.location.protocol === "https:"
-    const adressesPubliques = adresses.filter(a=>!a.startsWith("/ip4/127.0.0.1")).map(
-      a => https ? a.replace("/ws/", "/wss/") : a
-    )
+    const adressesPubliques = adresses.filter(a=>!a.startsWith("/ip4/127.0.0.1"))
     document.getElementById('msg').innerHTML = `<p>Vous pouvez inclure ce point de relai dans vos applis avec la configuration libp2p suivante :</p>`
     document.getElementById('adr').innerHTML = `
 <pre><code class="language-javascript" style="margin: 0 auto; min-width: 60%; max-width: 550px;">
