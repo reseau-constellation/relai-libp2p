@@ -69,7 +69,7 @@ export const créerNœud = async () => {
   const nœud = await createLibp2p({
     privateKey: clefPrivée,
     addresses: {
-      listen: ["/ip4/0.0.0.0/tcp/0/ws"],
+      listen: ["/ip4/0.0.0.0/tcp/12345/ws"],
       announce: domaine
         ? [
             `/dns4/${domaine}/tcp/443/wss/p2p/${peerId?.toString()}`,
