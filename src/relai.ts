@@ -101,10 +101,19 @@ export const créerNœud = async () => {
       identify: identify(),
       autoNAT: autoNAT(),
       dcutr: dcutr(),
-      relay: circuitRelayServer(),
+      relay: circuitRelayServer({
+        reservations: {
+          maxReservations: Infinity
+        }
+      }),
       pubsub: gossipsub({
         allowPublishToZeroTopicPeers: true,
         canRelayMessage: true,
+        scoreThresholds: {
+          gossipThreshold: -Infinity,
+          publishThreshold: -Infinity,
+          graylistThreshold: -Infinity,
+        }
       }),
       obtClefPrivée: (components: MyServiceComponents) =>
         new MyService(components),
