@@ -108,6 +108,7 @@ export const créerNœud = async () => {
       }),
       pubsub: gossipsub({
         allowPublishToZeroTopicPeers: true,
+        runOnLimitedConnection: true,
         canRelayMessage: true,
         scoreThresholds: {
           gossipThreshold: -Infinity,
