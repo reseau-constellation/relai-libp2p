@@ -92,7 +92,7 @@ export const créerNœud = async () => {
         list: bootstrapList,
       }),
       pubsubPeerDiscovery({
-        interval: 10000,
+        interval: 1000,
         topics: pubsubPeerDiscoveryTopics, // defaults to ['_peer-discovery._p2p._pubsub']
         listenOnly: false,
       }),
@@ -122,6 +122,7 @@ export const créerNœud = async () => {
         new MyService(components),
     },
   });
+  nœud.services.pubsub.subscribe("réseau-constellation");
 
   if (!peerId) {
     const clefPrivéeGénérée = nœud.services.obtClefPrivée.obtenirClef();
