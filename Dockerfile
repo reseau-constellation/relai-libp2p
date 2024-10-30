@@ -1,5 +1,5 @@
 # Node serves as the runtime environment for JavaScript, hence we use it as our base image.
-FROM node:21 AS base
+FROM node:22 AS base
 RUN npm install -g pnpm
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
