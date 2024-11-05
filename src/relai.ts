@@ -70,18 +70,13 @@ export const créerNœud = async () => {
   const clefPrivée = await obtClefPrivéeRelai();
 
   const peerId = clefPrivée ? peerIdFromPrivateKey(clefPrivée) : undefined;
-  // const peerId = clefPrivée ? await createFromPrivKey(clefPrivée) : undefined;
+
   const domaine = process.env.DOMAINE;
 
-  const nœud = await createLibp2p({
+  const nœud = await await createLibp2p({
     privateKey: clefPrivée,
     addresses: {
-      listen: [
-        "/ip4/0.0.0.0/tcp/12345/ws",
-        "/webrtc",
-        "/webtransport",
-        "/p2p-circuit",
-      ],
+      listen: ["/ip4/0.0.0.0/tcp/12345/ws", "/webrtc", "/webtransport"],
       announce: domaine
         ? [
             `/dns4/${domaine}/tcp/443/wss/p2p/${peerId?.toString()}`,
@@ -89,8 +84,11 @@ export const créerNœud = async () => {
           ]
         : undefined,
     },
+
     transports: [
-      webSockets({ filter: all }),
+      webSockets({
+        filter: all,
+      }),
       webRTC(),
       webRTCDirect(),
       webTransport(),
@@ -98,43 +96,40 @@ export const créerNœud = async () => {
       circuitRelayTransport(),
     ],
     transportManager: {
-      faultTolerance: FaultTolerance.NO_FATAL,
+      //   faultTolerance: FaultTolerance.NO_FATAL,
     },
     connectionEncrypters: [noise()],
     streamMuxers: [yamux()],
-    connectionManager: {},
+    // connectionManager: {},
     peerDiscovery: [
       /*bootstrap({
         list: bootstrapList,
       }),*/
       pubsubPeerDiscovery({
-        interval: 10000,
+        interval: 1000,
         topics: pubsubPeerDiscoveryTopics, // defaults to ['_peer-discovery._p2p._pubsub']
         listenOnly: false,
       }),
     ],
     services: {
       identify: identify(),
-      autoNAT: autoNAT(),
-      dcutr: dcutr(),
-      relay: circuitRelayServer(),
       pubsub: gossipsub({
         allowPublishToZeroTopicPeers: true,
         runOnLimitedConnection: true,
         canRelayMessage: true,
-        doPX: true,
-        scoreThresholds: {
-          gossipThreshold: -Infinity,
-          publishThreshold: -Infinity,
-          graylistThreshold: -Infinity,
+      }),
+      relay: circuitRelayServer({
+        reservations: {
+          maxReservations: 5000,
+          defaultDataLimit: BigInt(1024 * 1024 * 1024),
         },
       }),
       obtClefPrivée: (components: MyServiceComponents) =>
         new ServiceClefPrivée(components),
     },
   });
-  nœud.services.pubsub.subscribe("réseau-constellation");
-  nœud.services.pubsub.subscribe("test:gossipsub");
+  // nœud.services.pubsub.subscribe("réseau-constellation");
+  // nœud.services.pubsub.subscribe("test:gossipsub");
 
   if (!peerId) {
     const clefPrivéeGénérée = nœud.services.obtClefPrivée.obtenirClef();
@@ -151,8 +146,17 @@ export const créerNœud = async () => {
   nœud.addEventListener("peer:connect", () => {
     console.log("Pairs: ", nœud.getPeers());
   });
+  nœud.addEventListener("peer:disconnect", () => {
+    console.log("Pairs: ", nœud.getPeers());
+  });
   nœud.services.relay.addEventListener("relay:reservation", (x) => {
     console.log("Réservation ", x.detail.addr.toString());
+  });
+  nœud.services.relay.addEventListener("relay:advert:success", (x) => {
+    console.log("relay:advert:success");
+  });
+  nœud.services.relay.addEventListener("relay:advert:error", (x) => {
+    console.log("relay:advert:error");
   });
   return nœud;
 };
