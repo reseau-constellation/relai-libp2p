@@ -76,7 +76,12 @@ export const créerNœud = async () => {
   const nœud = await await createLibp2p({
     privateKey: clefPrivée,
     addresses: {
-      listen: ["/ip4/0.0.0.0/tcp/12345/ws", "/webrtc", "/webtransport"],
+      listen: [
+        "/ip4/0.0.0.0/tcp/12345/ws",
+        "/webrtc",
+        "/webtransport",
+        "/p2p-circuit",
+      ],
       announce: domaine
         ? [
             `/dns4/${domaine}/tcp/443/wss/p2p/${peerId?.toString()}`,
@@ -96,7 +101,7 @@ export const créerNœud = async () => {
       circuitRelayTransport(),
     ],
     transportManager: {
-      //   faultTolerance: FaultTolerance.NO_FATAL,
+      faultTolerance: FaultTolerance.NO_FATAL,
     },
     connectionEncrypters: [noise()],
     streamMuxers: [yamux()],
@@ -113,6 +118,8 @@ export const créerNœud = async () => {
     ],
     services: {
       identify: identify(),
+      autoNAT: autoNAT(),
+      dcutr: dcutr(),
       pubsub: gossipsub({
         allowPublishToZeroTopicPeers: true,
         runOnLimitedConnection: true,
@@ -152,10 +159,10 @@ export const créerNœud = async () => {
   nœud.services.relay.addEventListener("relay:reservation", (x) => {
     console.log("Réservation ", x.detail.addr.toString());
   });
-  nœud.services.relay.addEventListener("relay:advert:success", (x) => {
+  nœud.services.relay.addEventListener("relay:advert:success", () => {
     console.log("relay:advert:success");
   });
-  nœud.services.relay.addEventListener("relay:advert:error", (x) => {
+  nœud.services.relay.addEventListener("relay:advert:error", () => {
     console.log("relay:advert:error");
   });
   return nœud;
