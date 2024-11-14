@@ -128,7 +128,7 @@ export const créerNœud = async () => {
       relay: circuitRelayServer({
         reservations: {
           maxReservations: 5000,
-          defaultDataLimit: BigInt(1024 * 1024 * 1024),
+          applyDefaultLimit: false,
         },
       }),
       obtClefPrivée: (components: MyServiceComponents) =>
