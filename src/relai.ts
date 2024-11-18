@@ -109,8 +109,6 @@ export const créerNœud = async () => {
     peerDiscovery: [
       bootstrap({
         list: bootstrapList,
-        tagTTL: 0,
-        timeout: 0,
       }),
       pubsubPeerDiscovery({
         interval: 1000,
@@ -126,6 +124,7 @@ export const créerNœud = async () => {
         allowPublishToZeroTopicPeers: true,
         runOnLimitedConnection: true,
         canRelayMessage: true,
+        doPX: true,
       }),
       relay: circuitRelayServer({
         reservations: {
