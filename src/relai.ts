@@ -15,7 +15,7 @@ import { webSockets } from "@libp2p/websockets";
 import { all } from "@libp2p/websockets/filters";
 import { webRTC, webRTCDirect } from "@libp2p/webrtc";
 import { webTransport } from "@libp2p/webtransport";
-// import { bootstrap } from "@libp2p/bootstrap";
+import { bootstrap } from "@libp2p/bootstrap";
 import { pubsubPeerDiscovery } from "@libp2p/pubsub-peer-discovery";
 import { autoNAT } from "@libp2p/autonat";
 import { dcutr } from "@libp2p/dcutr";
@@ -30,7 +30,7 @@ import {
 } from "uint8arrays";
 import fs from "fs";
 
-// const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",") || [];
+const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",") || [];
 const pubsubPeerDiscoveryTopics =
   process.env.RELAY_PUBSUB_PEER_DISCOVERY_TOPICS?.split(",") || [];
 
@@ -107,9 +107,9 @@ export const créerNœud = async () => {
     streamMuxers: [yamux()],
     // connectionManager: {},
     peerDiscovery: [
-      /*bootstrap({
+      bootstrap({
         list: bootstrapList,
-      }),*/
+      }),
       pubsubPeerDiscovery({
         interval: 1000,
         topics: pubsubPeerDiscoveryTopics, // defaults to ['_peer-discovery._p2p._pubsub']
