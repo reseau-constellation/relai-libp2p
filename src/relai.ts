@@ -109,6 +109,8 @@ export const créerNœud = async () => {
     peerDiscovery: [
       bootstrap({
         list: bootstrapList,
+        tagTTL: 0,
+        timeout: 0,
       }),
       pubsubPeerDiscovery({
         interval: 1000,
