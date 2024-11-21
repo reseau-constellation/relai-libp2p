@@ -136,7 +136,9 @@ export const créerNœud = async () => {
         new ServiceClefPrivée(components),
     },
   });
-  // nœud.services.pubsub.subscribe("réseau-constellation");
+
+  // Solution partielle temporaire
+  nœud.services.pubsub.subscribe("réseau-constellation");
   // nœud.services.pubsub.subscribe("test:gossipsub");
 
   if (!peerId) {
