@@ -19,7 +19,7 @@ import { bootstrap } from "@libp2p/bootstrap";
 import { pubsubPeerDiscovery } from "@libp2p/pubsub-peer-discovery";
 import { autoNAT } from "@libp2p/autonat";
 import { dcutr } from "@libp2p/dcutr";
-import { gossipsub } from "@chainsafe/libp2p-gossipsub";
+import { type GossipSub, gossipsub } from "@chainsafe/libp2p-gossipsub";
 import { tcp } from "@libp2p/tcp";
 import { keys } from "@libp2p/crypto";
 import { createLibp2p } from "libp2p";
@@ -73,7 +73,7 @@ export const créerNœud = async () => {
 
   const domaine = process.env.DOMAINE;
 
-  const nœud = await await createLibp2p({
+  const nœud = await createLibp2p({
     privateKey: clefPrivée,
     addresses: {
       listen: [
@@ -137,9 +137,27 @@ export const créerNœud = async () => {
     },
   });
 
-  // Solution partielle temporaire
+  // À faire : garder compte des requêtes par pair et désabonner lorsque plus nécessaire
+  const fonctionAvant = (
+    nœud.services.pubsub as GossipSub
+  ).handleReceivedRpc.bind(nœud.services.pubsub);
+  const fonctionAprès = (
+    ...args: Parameters<GossipSub["handleReceivedRpc"]>
+  ) => {
+    args[1].subscriptions.forEach((s) => {
+      if (s.subscribe && s.topic) {
+        nœud.services.pubsub.subscribe(s.topic);
+      }
+    });
+
+    return fonctionAvant(...args);
+  };
+
+  (nœud.services.pubsub as GossipSub).handleReceivedRpc = fonctionAprès.bind(
+    (nœud.services.pubsub as GossipSub).handleReceivedRpc,
+  );
+
   nœud.services.pubsub.subscribe("réseau-constellation");
-  // nœud.services.pubsub.subscribe("test:gossipsub");
 
   if (!peerId) {
     const clefPrivéeGénérée = nœud.services.obtClefPrivée.obtenirClef();
