@@ -1,5 +1,6 @@
 import {
   FaultTolerance,
+  PeerDiscovery,
   type Libp2p,
   type PrivateKey,
 } from "@libp2p/interface";
@@ -30,7 +31,7 @@ import {
 } from "uint8arrays";
 import fs from "fs";
 
-const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",") || [];
+const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",");
 const pubsubPeerDiscoveryTopics =
   process.env.RELAY_PUBSUB_PEER_DISCOVERY_TOPICS?.split(",") || [];
 
@@ -73,6 +74,21 @@ export const créerNœud = async () => {
 
   const domaine = process.env.DOMAINE;
 
+  // eslint-disable-next-line
+  const peerDiscovery: ((components: any) => PeerDiscovery)[] = [
+    pubsubPeerDiscovery({
+      interval: 1000,
+      topics: pubsubPeerDiscoveryTopics, // defaults to ['_peer-discovery._p2p._pubsub']
+      listenOnly: false,
+    }),
+  ];
+  if (bootstrapList)
+    peerDiscovery.push(
+      bootstrap({
+        list: bootstrapList,
+      }),
+    );
+
   const nœud = await createLibp2p({
     privateKey: clefPrivée,
     addresses: {
@@ -105,17 +121,7 @@ export const créerNœud = async () => {
     },
     connectionEncrypters: [noise()],
     streamMuxers: [yamux()],
-    // connectionManager: {},
-    peerDiscovery: [
-      bootstrap({
-        list: bootstrapList,
-      }),
-      pubsubPeerDiscovery({
-        interval: 1000,
-        topics: pubsubPeerDiscoveryTopics, // defaults to ['_peer-discovery._p2p._pubsub']
-        listenOnly: false,
-      }),
-    ],
+    peerDiscovery,
     services: {
       identify: identify(),
       autoNAT: autoNAT(),
