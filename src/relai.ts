@@ -41,11 +41,11 @@ export const obtClefPrivéeRelai = async () => {
   const relayPrivKey = process.env.CLEF_PRIVEE_RELAI;
 
   if (relayPrivKey) {
+    const encoded = uint8ArrayFromString(relayPrivKey, "base64");
+
     // L'identité de pair qui correspond à la clef privée ci-dessus
     // exemple : '12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE'
-    const encoded = uint8ArrayFromString(relayPrivKey, "hex");
-
-    const clefPrivée = keys.privateKeyFromProtobuf(encoded);
+    const clefPrivée = keys.privateKeyFromRaw(encoded);
     return clefPrivée;
   }
   return undefined;
@@ -167,7 +167,7 @@ export const créerNœud = async () => {
 
   if (!peerId) {
     const clefPrivéeGénérée = nœud.services.obtClefPrivée.obtenirClef();
-    const clefTexte = uint8ArrayToString(clefPrivéeGénérée.raw, "hex");
+    const clefTexte = uint8ArrayToString(clefPrivéeGénérée.raw, "base64");
     fs.appendFileSync(".env", `\nCLEF_PRIVEE_RELAI=${clefTexte}`);
   }
   nœud.addEventListener("peer:discovery", (x) => {
