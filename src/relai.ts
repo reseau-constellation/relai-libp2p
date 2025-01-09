@@ -74,7 +74,7 @@ export const créerNœud = async () => {
 
   const domaine = process.env.DOMAINE;
 
-  // eslint-disable-next-line
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const peerDiscovery: ((components: any) => PeerDiscovery)[] = [
     pubsubPeerDiscovery({
       interval: 1000,
