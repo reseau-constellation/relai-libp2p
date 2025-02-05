@@ -131,6 +131,9 @@ export const créerNœud = async () => {
         runOnLimitedConnection: true,
         canRelayMessage: true,
         doPX: true,
+        scoreParams: {
+          // IPColocationFactorWeight: 0,
+        },
       }),
       relay: circuitRelayServer({
         reservations: {
