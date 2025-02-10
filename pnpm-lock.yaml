@@ -52,7 +52,7 @@ importers:
         version: 10.0.18
       '@libp2p/webrtc':
         specifier: ^5.0.26
-        version: 5.0.26(react-native@0.76.1(@babel/core@7.26.8)(@babel/preset-env@7.26.0(@babel/core@7.26.8))(react@18.3.1))
+        version: 5.0.27(react-native@0.76.1(@babel/core@7.26.8)(@babel/preset-env@7.26.0(@babel/core@7.26.8))(react@18.3.1))
       '@libp2p/websockets':
         specifier: ^9.1.5
         version: 9.1.5
@@ -1075,8 +1075,8 @@ packages:
   '@libp2p/utils@6.5.1':
     resolution: {integrity: sha512-2LMLzel5HrvGjh/4W3PMPhsgSDs574vNiFWC6WNB5AsBROrfC0QMoMJjzXoUSPei/PJS9kYaxZOXwmkU3mWzLw==}
 
-  '@libp2p/webrtc@5.0.26':
-    resolution: {integrity: sha512-2ZF3hA2tEQnysOnCSLf7czUq6vDbNI/LXjEwdFZXjC8z2aEb50z4U/YTes2h8EnvsRhHr0koUCRbaZIELx3NwQ==}
+  '@libp2p/webrtc@5.0.27':
+    resolution: {integrity: sha512-rw8mo5hfur8Ars5JXL6mfmrEc9prpEU4Ol2gyVdegDEZDwuOpEX7A72zEY5jS8TAtih7bDw52rPs70M7pF73sA==}
 
   '@libp2p/websockets@9.1.5':
     resolution: {integrity: sha512-E/PJLWMI8cHKLHONuvLJDJca1KuMcn5NaqhGt5/kXt2HC1i02lbEa8xsKsWSxoVBwK/jEwjwINiW4OaKuQr6SQ==}
@@ -5465,7 +5465,7 @@ snapshots:
       uint8arraylist: 2.4.8
       uint8arrays: 5.1.0
 
-  '@libp2p/webrtc@5.0.26(react-native@0.76.1(@babel/core@7.26.8)(@babel/preset-env@7.26.0(@babel/core@7.26.8))(react@18.3.1))':
+  '@libp2p/webrtc@5.0.27(react-native@0.76.1(@babel/core@7.26.8)(@babel/preset-env@7.26.0(@babel/core@7.26.8))(react@18.3.1))':
     dependencies:
       '@chainsafe/libp2p-noise': 16.0.1
       '@libp2p/interface': 2.5.0
