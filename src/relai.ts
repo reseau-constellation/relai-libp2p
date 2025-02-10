@@ -30,6 +30,7 @@ import {
   toString as uint8ArrayToString,
 } from "uint8arrays";
 import fs from "fs";
+import { createPeerScoreParams } from "@chainsafe/libp2p-gossipsub/score";
 
 const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",");
 const pubsubPeerDiscoveryTopics =
@@ -127,13 +128,19 @@ export const créerNœud = async () => {
       autoNAT: autoNAT(),
       dcutr: dcutr(),
       pubsub: gossipsub({
+        D: 0,
+        Dlo: 0,
+        Dhi: 0,
+        Dout: 0,
+        doPX: true,
+        ignoreDuplicatePublishError: true,
         allowPublishToZeroTopicPeers: true,
         runOnLimitedConnection: true,
         canRelayMessage: true,
-        doPX: true,
-        scoreParams: {
+        scoreParams: createPeerScoreParams({
+          topicScoreCap: 50,
           // IPColocationFactorWeight: 0,
-        },
+        }),
       }),
       relay: circuitRelayServer({
         reservations: {
