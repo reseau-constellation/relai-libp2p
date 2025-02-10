@@ -14,6 +14,13 @@
     {
       "matchPackagePatterns": ["^actions/"],
       "automerge": true
+    },
+    {
+      "description": "Regrouper les librairies @libp2p.",
+      "groupName": "Libp2p",
+      "groupSlug": "libp2p",
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["@libp2p/**", "@chainsafe/**", "libp2p"]
     }
   ]
 }
