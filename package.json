@@ -16,7 +16,8 @@
     "formatter": "pnpm prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\" && pnpm eslint",
     "versioner": "pnpm genversion  --es6 --semi src/version.ts",
     "lancer": "pnpm compiler && node --env-file=.env dist/serveur.js",
-    "lancer:prod": "node dist/serveur.js"
+    "lancer:prod": "node dist/serveur.js",
+    "effacer-pairs": "rimraf .libp2p"
   },
   "watch": {
     "build": {
