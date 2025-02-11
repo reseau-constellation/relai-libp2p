@@ -31,6 +31,8 @@ import {
 } from "uint8arrays";
 import fs from "fs";
 import { createPeerScoreParams } from "@chainsafe/libp2p-gossipsub/score";
+import { FsDatastore } from "datastore-fs";
+import { join } from "path";
 
 const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",");
 const pubsubPeerDiscoveryTopics =
@@ -90,6 +92,9 @@ export const créerNœud = async () => {
       }),
     );
 
+  const dossierStockage = ".libp2p";
+  const stockage = new FsDatastore(dossierStockage);
+
   const nœud = await createLibp2p({
     privateKey: clefPrivée,
     addresses: {
@@ -106,7 +111,7 @@ export const créerNœud = async () => {
           ]
         : undefined,
     },
-
+    datastore: stockage,
     transports: [
       webSockets({
         filter: all,
