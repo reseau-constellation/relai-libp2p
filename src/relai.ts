@@ -32,7 +32,6 @@ import {
 import fs from "fs";
 import { createPeerScoreParams } from "@chainsafe/libp2p-gossipsub/score";
 import { FsDatastore } from "datastore-fs";
-import { join } from "path";
 
 const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",");
 const pubsubPeerDiscoveryTopics =
