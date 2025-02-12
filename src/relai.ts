@@ -143,7 +143,7 @@ export const créerNœud = async () => {
         canRelayMessage: true,
         scoreParams: createPeerScoreParams({
           topicScoreCap: 50,
-          // IPColocationFactorWeight: 0,
+          IPColocationFactorWeight: 0,
         }),
       }),
       relay: circuitRelayServer({
