@@ -19,7 +19,7 @@ importers:
         version: 7.0.1
       '@helia/block-brokers':
         specifier: ^4.0.3
-        version: 4.0.3
+        version: 4.0.4
       '@libp2p/autonat':
         specifier: ^2.0.19
         version: 2.0.19
@@ -913,17 +913,17 @@ packages:
     resolution: {integrity: sha512-lB05FkqEdUg2AA0xEbUz0SnkXT1LcCTa438W4IWTUh4hdOnVbQyOJ81OrDXsJk/LSiJHubgGEFoR5EHq1NsH1A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@helia/bitswap@2.0.3':
-    resolution: {integrity: sha512-h6FCdHL5GlN8HW1QQrfAgWcqq3hyCewZeO5Ey2/TGPrRJI+TipVVRt+Dfu0UjSxAsSHujKdJ6wBDfbOCqRc9YA==}
+  '@helia/bitswap@2.0.4':
+    resolution: {integrity: sha512-14kppjM10GQr//pWeLxGuEUOZ3m2NB8Imwq+0yUCPMT6wPRUaTv98lr4L/FoDR4if6ADCFGlsioqothxmtjnyA==}
 
-  '@helia/block-brokers@4.0.3':
-    resolution: {integrity: sha512-EU3VaOVKicKSEJDyfzi9RVdr+pi8AO81B6bsJ7GQDGhruJfQAatNk4+uiSh58lwWrwnVMlXIFP3d8XskDwPbyQ==}
+  '@helia/block-brokers@4.0.4':
+    resolution: {integrity: sha512-J9Oh5KSMJUYg+WZCted73QfU4iAqRPXULTRSorzJ/iyFsONQwvY1nvlL8rcupt5uSi3ZHdHOBHPGagR61ZVu/A==}
 
   '@helia/interface@5.2.0':
     resolution: {integrity: sha512-vxe/+EA4dvHOrwYJPiFjCbRgRPURWS5AURpbMDoKpx9ldZlxXkV3YWBl4EAMp4lrRos9WjRyWu2OoDfOsC1uIg==}
 
-  '@helia/utils@1.2.0':
-    resolution: {integrity: sha512-dXjX9s3Bbe4UvliG1IDEIrpgMAIRW4BIQBdQo4zWS0aAHIL2BZaudEMUS3euWtWUJhpx2shywZsJ5vCkTXDHFg==}
+  '@helia/utils@1.2.1':
+    resolution: {integrity: sha512-qvr2Um9rtM/vNQX9/rCM25XTnZzY3FI7txN2AC/pb1eN8UH6+W8aynoj9EhDVp0LHBJLXU519tWyuvsdOyquYg==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1307,6 +1307,9 @@ packages:
 
   '@types/node@22.13.1':
     resolution: {integrity: sha512-jK8uzQlrvXqEU91UxiK5J7pKHyzgnI1Qnl0QDHIgVGuolJhRb9EEl28Cj9b3rGR8B2lhFCtvIm5os8lFnO/1Ew==}
+
+  '@types/node@22.13.2':
+    resolution: {integrity: sha512-Z+r8y3XL9ZpI2EY52YYygAFmo2/oWfNSj4BCpAXE2McAexDk8VcnBMGC9Djn9gTKt4d2T/hhXqmPzo4hfIXtTg==}
 
   '@types/qs@6.9.18':
     resolution: {integrity: sha512-kK7dgTYDyGqS+e2Q4aK9X3D7q234CIZ1Bv0q/7Z5IwRDoADNU81xXJK/YVyLbLTZCoIwUoDoffFeF+p/eIklAA==}
@@ -1930,8 +1933,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.5.97:
-    resolution: {integrity: sha512-HKLtaH02augM7ZOdYRuO19rWDeY+QSJ1VxnXFa/XDFLf07HvM90pALIJFgrO+UVaajI3+aJMMpojoUTLZyQ7JQ==}
+  electron-to-chromium@1.5.98:
+    resolution: {integrity: sha512-bI/LbtRBxU2GzK7KK5xxFd2y9Lf9XguHooPYbcXWy6wUoT8NMnffsvRhPmSeUHLSDKAEtKuTaEtK4Ms15zkIEA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -2170,8 +2173,8 @@ packages:
   flow-enums-runtime@0.0.6:
     resolution: {integrity: sha512-3PYnM29RFXwvAN6Pc/scUfkI7RwhQ/xqyLUyPNlXUp9S40zI8nup9tUSrTLSVnWGBN38FNiGWbwZOB6uR4OGdw==}
 
-  flow-parser@0.260.0:
-    resolution: {integrity: sha512-GvVx+yGdVK4U6Q5AcLCCqVjCyJTeYClOrMYlxhSG7fPNcsiYqtIOIXA+/SaTsvj1kB/xyiwZ5+iOGQXbwaE6Ew==}
+  flow-parser@0.261.0:
+    resolution: {integrity: sha512-b6ffusIxt5dX8QmX6+QCUi8NrbzNZ0C+ynDC8vbe8KbZ7chJjnYGr5ssiiPR2b51vdqUHPay1HB5AhRp6CDc4Q==}
     engines: {node: '>=0.4.0'}
 
   for-in@1.0.2:
@@ -3772,8 +3775,8 @@ packages:
     resolution: {integrity: sha512-s0ZZzd0BzYv5tLSptZooSjK8oj6C+c19p7Vqta9+6NPOf7r+fxq0cJe6/oN4LTC79sy5NY8ucOJNgwsKCSbfqg==}
     engines: {node: '>=6.0.0'}
 
-  terser@5.38.2:
-    resolution: {integrity: sha512-w8CXxxbFA5zfNsR/i8HZq5bvn18AK0O9jj7hyo1YqkovLxEFa0uP0LCVGZRqiRaKRFxXhELBp8SteeAjEnfeJg==}
+  terser@5.39.0:
+    resolution: {integrity: sha512-LBAhFyLho16harJoWMg/nZsQYgTrg5jXOn2nCYjRUcZZEdE3qa2zb8QEDRUGVZBW4rlazf2fxkg8tztybTaqWw==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -5050,10 +5053,10 @@ snapshots:
       '@eslint/core': 0.10.0
       levn: 0.4.1
 
-  '@helia/bitswap@2.0.3':
+  '@helia/bitswap@2.0.4':
     dependencies:
       '@helia/interface': 5.2.0
-      '@helia/utils': 1.2.0
+      '@helia/utils': 1.2.1
       '@libp2p/interface': 2.5.0
       '@libp2p/logger': 5.1.8
       '@libp2p/peer-collections': 6.0.17
@@ -5077,11 +5080,11 @@ snapshots:
       uint8arraylist: 2.4.8
       uint8arrays: 5.1.0
 
-  '@helia/block-brokers@4.0.3':
+  '@helia/block-brokers@4.0.4':
     dependencies:
-      '@helia/bitswap': 2.0.3
+      '@helia/bitswap': 2.0.4
       '@helia/interface': 5.2.0
-      '@helia/utils': 1.2.0
+      '@helia/utils': 1.2.1
       '@libp2p/interface': 2.5.0
       '@libp2p/utils': 6.5.1
       '@multiformats/multiaddr': 12.3.5
@@ -5102,7 +5105,7 @@ snapshots:
       multiformats: 13.3.2
       progress-events: 1.0.1
 
-  '@helia/utils@1.2.0':
+  '@helia/utils@1.2.1':
     dependencies:
       '@helia/interface': 5.2.0
       '@ipld/dag-cbor': 9.2.2
@@ -5184,14 +5187,14 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       jest-mock: 29.7.0
 
   '@jest/fake-timers@29.7.0':
     dependencies:
       '@jest/types': 29.6.3
       '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
@@ -5225,7 +5228,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
@@ -5835,7 +5838,7 @@ snapshots:
 
   '@types/graceful-fs@4.1.9':
     dependencies:
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
 
   '@types/http-errors@2.0.4': {}
 
@@ -5859,9 +5862,13 @@ snapshots:
 
   '@types/node-forge@1.3.11':
     dependencies:
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
 
   '@types/node@22.13.1':
+    dependencies:
+      undici-types: 6.20.0
+
+  '@types/node@22.13.2':
     dependencies:
       undici-types: 6.20.0
 
@@ -6273,7 +6280,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001699
-      electron-to-chromium: 1.5.97
+      electron-to-chromium: 1.5.98
       node-releases: 2.0.19
       update-browserslist-db: 1.1.2(browserslist@4.24.4)
 
@@ -6362,7 +6369,7 @@ snapshots:
 
   chrome-launcher@0.15.2:
     dependencies:
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -6371,7 +6378,7 @@ snapshots:
 
   chromium-edge-launcher@0.2.0:
     dependencies:
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -6601,7 +6608,7 @@ snapshots:
     dependencies:
       jake: 10.9.2
 
-  electron-to-chromium@1.5.97: {}
+  electron-to-chromium@1.5.98: {}
 
   emoji-regex@8.0.0: {}
 
@@ -6935,7 +6942,7 @@ snapshots:
 
   flow-enums-runtime@0.0.6: {}
 
-  flow-parser@0.260.0: {}
+  flow-parser@0.261.0: {}
 
   for-in@1.0.2: {}
 
@@ -7421,7 +7428,7 @@ snapshots:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
@@ -7431,7 +7438,7 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
       '@types/graceful-fs': 4.1.9
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -7458,7 +7465,7 @@ snapshots:
   jest-mock@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       jest-util: 29.7.0
 
   jest-regex-util@29.6.3: {}
@@ -7466,7 +7473,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -7483,7 +7490,7 @@ snapshots:
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 22.13.1
+      '@types/node': 22.13.2
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -7517,7 +7524,7 @@ snapshots:
       '@babel/register': 7.25.9(@babel/core@7.26.8)
       babel-core: 7.0.0-bridge.0(@babel/core@7.26.8)
       chalk: 4.1.2
-      flow-parser: 0.260.0
+      flow-parser: 0.261.0
       graceful-fs: 4.2.11
       micromatch: 4.0.8
       neo-async: 2.6.2
@@ -7742,7 +7749,7 @@ snapshots:
   metro-minify-terser@0.81.1:
     dependencies:
       flow-enums-runtime: 0.0.6
-      terser: 5.38.2
+      terser: 5.39.0
 
   metro-resolver@0.81.1:
     dependencies:
@@ -8728,7 +8735,7 @@ snapshots:
     dependencies:
       rimraf: 2.6.3
 
-  terser@5.38.2:
+  terser@5.39.0:
     dependencies:
       '@jridgewell/source-map': 0.3.6
       acorn: 8.14.0
