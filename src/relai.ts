@@ -130,23 +130,22 @@ export const créerNœud = async () => {
       autoNAT: autoNAT(),
       dcutr: dcutr(),
       pubsub: gossipsub({
-        D: 0,
+        /*D: 0,
         Dlo: 0,
         Dhi: 0,
-        Dout: 0,
+        Dout: 0,*/
         doPX: true,
         ignoreDuplicatePublishError: true,
         allowPublishToZeroTopicPeers: true,
         runOnLimitedConnection: true,
         canRelayMessage: true,
         scoreParams: createPeerScoreParams({
-          topicScoreCap: 50,
           IPColocationFactorWeight: 0,
         }),
       }),
       relay: circuitRelayServer({
         reservations: {
-          maxReservations: 5000,
+          maxReservations: Infinity,
           applyDefaultLimit: false,
         },
       }),
