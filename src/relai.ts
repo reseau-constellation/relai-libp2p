@@ -130,10 +130,10 @@ export const créerNœud = async () => {
       autoNAT: autoNAT(),
       dcutr: dcutr(),
       pubsub: gossipsub({
-        /*D: 0,
+        D: 0,
         Dlo: 0,
         Dhi: 0,
-        Dout: 0,*/
+        Dout: 0,
         doPX: true,
         ignoreDuplicatePublishError: true,
         allowPublishToZeroTopicPeers: true,
