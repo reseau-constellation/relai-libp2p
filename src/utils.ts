@@ -25,6 +25,8 @@ const mettreAbonnementsÀJour = ({
     (s) => !sujetsMaintenant.includes(s) && !toujoursRelayer.includes(s),
   );
   désabonnements.forEach((s) => pubsub.unsubscribe(s));
+
+  console.log({ sujetsMaintenant, désabonnements });
 };
 
 export const relayerPubsub = async ({
