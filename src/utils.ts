@@ -16,17 +16,17 @@ const mettreAbonnementsÀJour = ({
   idPair: string;
   toujoursRelayer: string[];
 }) => {
-  const sujetsDavant = uniques(Object.values(requêtes).flat());
+  // const sujetsDavant = uniques(Object.values(requêtes).flat());
   requêtes[idPair] = nouveauxSujetsPair;
   const sujetsMaintenant = uniques(Object.values(requêtes).flat());
   // On peut se (r)abonner à tout, parce que GossipSub filtre les sujets auxquels on est déjà abonnés
   sujetsMaintenant.forEach((s) => pubsub.subscribe(s));
-  const désabonnements = sujetsDavant.filter(
+  /*const désabonnements = sujetsDavant.filter(
     (s) => !sujetsMaintenant.includes(s) && !toujoursRelayer.includes(s),
   );
-  désabonnements.forEach((s) => pubsub.unsubscribe(s));
+  désabonnements.forEach((s) => pubsub.unsubscribe(s));*/
 
-  console.log({ sujetsMaintenant, désabonnements });
+  // console.log({ sujetsMaintenant, désabonnements });
 };
 
 export const relayerPubsub = async ({
