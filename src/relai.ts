@@ -13,7 +13,6 @@ import {
 } from "@libp2p/circuit-relay-v2";
 import { identify } from "@libp2p/identify";
 import { webSockets } from "@libp2p/websockets";
-import { all } from "@libp2p/websockets/filters";
 import { webRTC, webRTCDirect } from "@libp2p/webrtc";
 import { webTransport } from "@libp2p/webtransport";
 import { bootstrap } from "@libp2p/bootstrap";
@@ -113,9 +112,7 @@ export const créerNœud = async () => {
     },
     datastore: stockage,
     transports: [
-      webSockets({
-        filter: all,
-      }),
+      webSockets(),
       webRTC(),
       webRTCDirect(),
       webTransport(),
