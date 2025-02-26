@@ -26,7 +26,10 @@ const mettreAbonnementsÀJour = ({
   );
   désabonnements.forEach((s) => pubsub.unsubscribe(s));*/
 
-  // console.log({ sujetsMaintenant, désabonnements });
+  console.log({ 
+    sujetsMaintenant, 
+  //  désabonnements
+  });
 };
 
 export const relayerPubsub = async ({
