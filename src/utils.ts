@@ -8,7 +8,7 @@ const mettreAbonnementsÀJour = ({
   requêtes,
   nouveauxSujetsPair,
   idPair,
-  toujoursRelayer,
+  // toujoursRelayer,
 }: {
   pubsub: GossipSub;
   requêtes: { [idPair: string]: string[] };
@@ -26,10 +26,7 @@ const mettreAbonnementsÀJour = ({
   );
   désabonnements.forEach((s) => pubsub.unsubscribe(s));*/
 
-  console.log({ 
-    sujetsMaintenant, 
-  //  désabonnements
-  });
+  // console.log({ sujetsMaintenant, désabonnements });
 };
 
 export const relayerPubsub = async ({
