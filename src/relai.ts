@@ -32,6 +32,7 @@ import {
 import fs from "fs";
 import { createPeerScoreParams } from "@chainsafe/libp2p-gossipsub/score";
 import { FsDatastore } from "datastore-fs";
+import { relayerPubsub } from "./utils.js";
 
 const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",");
 const pubsubPeerDiscoveryTopics =
@@ -157,25 +158,10 @@ export const créerNœud = async () => {
     },
   });
 
-  // À faire : garder compte des requêtes par pair et désabonner lorsque plus nécessaire
-  const fonctionAvant = (
-    nœud.services.pubsub as GossipSub
-  ).handleReceivedRpc.bind(nœud.services.pubsub);
-  const fonctionAprès = (
-    ...args: Parameters<GossipSub["handleReceivedRpc"]>
-  ) => {
-    args[1].subscriptions.forEach((s) => {
-      if (s.subscribe && s.topic) {
-        nœud.services.pubsub.subscribe(s.topic);
-      }
-    });
-
-    return fonctionAvant(...args);
-  };
-
-  (nœud.services.pubsub as GossipSub).handleReceivedRpc = fonctionAprès.bind(
-    (nœud.services.pubsub as GossipSub).handleReceivedRpc,
-  );
+  await relayerPubsub({
+    pubsub: nœud.services.pubsub as GossipSub,
+    toujoursRelayer: ["réseau-constellation"],
+  });
 
   nœud.services.pubsub.subscribe("réseau-constellation");
 
