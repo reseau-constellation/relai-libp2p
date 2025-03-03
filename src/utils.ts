@@ -1,33 +1,8 @@
 import { GossipSub } from "@chainsafe/libp2p-gossipsub";
+import { SubscriptionChangeData } from "@libp2p/interface";
 import PQueue from "p-queue";
 
 const uniques = <T>(x: T[]): T[] => [...new Set(x)];
-
-const mettreAbonnementsÀJour = ({
-  pubsub,
-  requêtes,
-  nouveauxSujetsPair,
-  idPair,
-  // toujoursRelayer,
-}: {
-  pubsub: GossipSub;
-  requêtes: { [idPair: string]: string[] };
-  nouveauxSujetsPair: string[];
-  idPair: string;
-  toujoursRelayer: string[];
-}) => {
-  // const sujetsDavant = uniques(Object.values(requêtes).flat());
-  requêtes[idPair] = nouveauxSujetsPair;
-  const sujetsMaintenant = uniques(Object.values(requêtes).flat());
-  // On peut se (r)abonner à tout, parce que GossipSub filtre les sujets auxquels on est déjà abonnés
-  sujetsMaintenant.forEach((s) => pubsub.subscribe(s));
-  /*const désabonnements = sujetsDavant.filter(
-    (s) => !sujetsMaintenant.includes(s) && !toujoursRelayer.includes(s),
-  );
-  désabonnements.forEach((s) => pubsub.unsubscribe(s));*/
-
-  // console.log({ sujetsMaintenant, désabonnements });
-};
 
 export const relayerPubsub = async ({
   pubsub,
@@ -36,40 +11,28 @@ export const relayerPubsub = async ({
   pubsub: GossipSub;
   toujoursRelayer?: string[];
 }) => {
-  const requêtesPairs: { [idPair: string]: string[] } = {};
+  const requêtes: { [idPair: string]: string[] } = {};
   const queue = new PQueue({ concurrency: 1 });
 
-  // À faire : garder compte des requêtes par pair et désabonner lorsque plus nécessaire
-  const fonctionAvant = pubsub.handleReceivedRpc.bind(pubsub);
+  const gérerChangementAbonnement = ({detail}: {detail: SubscriptionChangeData}) => {
+    const sujetsDavant = uniques(Object.values(requêtes).flat());
+    requêtes[detail.peerId.toString()] = detail.subscriptions.filter(s=>s.subscribe).map(s=>s.topic);
 
-  const fonctionAprès = (
-    ...args: Parameters<GossipSub["handleReceivedRpc"]>
-  ) => {
-    const sujets = args[1].subscriptions
-      .filter((s) => s.subscribe && s.topic)
-      .map((s) => s.topic!);
-
-    queue.add(() =>
-      mettreAbonnementsÀJour({
-        pubsub,
-        requêtes: requêtesPairs,
-        nouveauxSujetsPair: sujets,
-        idPair: args[0].toCID().toString(),
-        toujoursRelayer,
-      }),
+    const sujetsMaintenant = uniques(Object.values(requêtes).flat());
+    // On peut se (r)abonner à tout, parce que GossipSub filtre les sujets auxquels on est déjà abonnés
+    sujetsMaintenant.forEach((s) => pubsub.subscribe(s));
+    const désabonnements = sujetsDavant.filter(
+      (s) => !sujetsMaintenant.includes(s) && !toujoursRelayer.includes(s),
     );
-
-    args[1].subscriptions.forEach((s) => {
-      if (s.subscribe && s.topic) {
-        pubsub.subscribe(s.topic);
-      }
-    });
-
-    return fonctionAvant(...args);
+    désabonnements.forEach((s) => pubsub.unsubscribe(s));
+  
+    console.log({ sujetsMaintenant, désabonnements });
   };
 
-  pubsub.handleReceivedRpc = fonctionAprès.bind(pubsub.handleReceivedRpc);
+  pubsub.addEventListener("subscription-change", gérerChangementAbonnement);
 
+  // À faire : garder compte des requêtes par pair et désabonner lorsque plus nécessaire
+  
   const fonctionStopAvant = pubsub.stop.bind(pubsub);
   const fonctionStopAprès = async () => {
     await queue.onIdle();
