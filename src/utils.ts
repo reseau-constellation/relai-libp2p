@@ -24,7 +24,7 @@ export const relayerPubsub = async ({
     const désabonnements = sujetsDavant.filter(
       (s) => !sujetsMaintenant.includes(s) && !toujoursRelayer.includes(s),
     );
-    désabonnements.forEach((s) => pubsub.unsubscribe(s));
+    // désabonnements.forEach((s) => pubsub.unsubscribe(s));
   
     console.log({ sujetsMaintenant, désabonnements });
   };
