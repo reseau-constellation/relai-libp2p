@@ -21,12 +21,12 @@ export const relayerPubsub = async ({
     const sujetsMaintenant = uniques(Object.values(requêtes).flat());
     // On peut se (r)abonner à tout, parce que GossipSub filtre les sujets auxquels on est déjà abonnés
     sujetsMaintenant.forEach((s) => pubsub.subscribe(s));
-    const désabonnements = sujetsDavant.filter(
+    /* const désabonnements = sujetsDavant.filter(
       (s) => !sujetsMaintenant.includes(s) && !toujoursRelayer.includes(s),
-    );
+    ); */
     // désabonnements.forEach((s) => pubsub.unsubscribe(s));
   
-    console.log({ sujetsMaintenant, désabonnements });
+    // console.log({ sujetsMaintenant, désabonnements });
   };
 
   pubsub.addEventListener("subscription-change", gérerChangementAbonnement);
