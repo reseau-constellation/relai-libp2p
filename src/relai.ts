@@ -21,6 +21,7 @@ import { autoNAT } from "@libp2p/autonat";
 import { dcutr } from "@libp2p/dcutr";
 import { type GossipSub, gossipsub } from "@chainsafe/libp2p-gossipsub";
 import { tcp } from "@libp2p/tcp";
+import { ping } from "@libp2p/ping";
 import { keys } from "@libp2p/crypto";
 import { createLibp2p } from "libp2p";
 import { peerIdFromPrivateKey } from "@libp2p/peer-id";
@@ -126,6 +127,7 @@ export const créerNœud = async () => {
     streamMuxers: [yamux()],
     peerDiscovery,
     services: {
+      ping: ping(),
       identify: identify({
         maxMessageSize: 1e6,
         maxInboundStreams: 50,
