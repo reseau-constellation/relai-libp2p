@@ -15,7 +15,7 @@ export const relayerPubsub = async ({
   const queue = new PQueue({ concurrency: 1 });
 
   const gérerChangementAbonnement = ({detail}: {detail: SubscriptionChangeData}) => {
-    const sujetsDavant = uniques(Object.values(requêtes).flat());
+    // const sujetsDavant = uniques(Object.values(requêtes).flat());
     requêtes[detail.peerId.toString()] = detail.subscriptions.filter(s=>s.subscribe).map(s=>s.topic);
 
     const sujetsMaintenant = uniques(Object.values(requêtes).flat());
