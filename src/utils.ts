@@ -14,9 +14,15 @@ export const relayerPubsub = async ({
   const requêtes: { [idPair: string]: string[] } = {};
   const queue = new PQueue({ concurrency: 1 });
 
-  const gérerChangementAbonnement = ({detail}: {detail: SubscriptionChangeData}) => {
+  const gérerChangementAbonnement = ({
+    detail,
+  }: {
+    detail: SubscriptionChangeData;
+  }) => {
     // const sujetsDavant = uniques(Object.values(requêtes).flat());
-    requêtes[detail.peerId.toString()] = detail.subscriptions.filter(s=>s.subscribe).map(s=>s.topic);
+    requêtes[detail.peerId.toString()] = detail.subscriptions
+      .filter((s) => s.subscribe)
+      .map((s) => s.topic);
 
     const sujetsMaintenant = uniques(Object.values(requêtes).flat());
     // On peut se (r)abonner à tout, parce que GossipSub filtre les sujets auxquels on est déjà abonnés
@@ -25,14 +31,14 @@ export const relayerPubsub = async ({
       (s) => !sujetsMaintenant.includes(s) && !toujoursRelayer.includes(s),
     ); */
     // désabonnements.forEach((s) => pubsub.unsubscribe(s));
-  
+
     // console.log({ sujetsMaintenant, désabonnements });
   };
 
   pubsub.addEventListener("subscription-change", gérerChangementAbonnement);
 
   // À faire : garder compte des requêtes par pair et désabonner lorsque plus nécessaire
-  
+
   const fonctionStopAvant = pubsub.stop.bind(pubsub);
   const fonctionStopAprès = async () => {
     await queue.onIdle();
