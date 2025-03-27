@@ -12,7 +12,7 @@
   "scripts": {
     "nettoyer": "rimraf dist",
     "compiler": "pnpm versioner && pnpm formatter && pnpm nettoyer && pnpm tspc -p tsconfig.build.json",
-    "test": "pnpm test:node && pnpm test:navig",
+    "test": "pnpm compiler && pnpm aegir test -t node --cov -- --exit",
     "formatter": "pnpm prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\" && pnpm eslint",
     "versioner": "pnpm genversion  --es6 --semi src/version.ts",
     "lancer": "pnpm compiler && node --env-file=.env dist/serveur.js",
@@ -40,6 +40,7 @@
     "@types/node": "^22.13.9",
     "@types/serve-static": "^1.15.7",
     "@types/uuid": "^10.0.0",
+    "aegir": "^45.1.4",
     "core-js": "^3.41.0",
     "eslint": "^9.21.0",
     "execa": "^9.5.2",
@@ -94,6 +95,7 @@
       "@ipshipyard/node-datachannel",
       "classic-level",
       "core-js",
+      "esbuild",
       "node-datachannel"
     ]
   }
