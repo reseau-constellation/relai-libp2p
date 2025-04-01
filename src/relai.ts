@@ -104,10 +104,10 @@ export const créerNœud = async () => {
         "/webtransport",
         "/p2p-circuit",
       ],
-      announce: domaine
+      announce: (domaine && peerId)
         ? [
-            `/dns4/${domaine}/tcp/443/wss/p2p/${peerId?.toString()}`,
-            `/dns4/${domaine}/tcp/80/ws/p2p/${peerId?.toString()}`,
+            `/dns4/${domaine}/tcp/443/wss/p2p/${peerId.toString()}`,
+            `/dns4/${domaine}/tcp/80/ws/p2p/${peerId.toString()}`,
           ]
         : undefined,
     },
