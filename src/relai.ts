@@ -33,10 +33,13 @@ import fs from "fs";
 import { createPeerScoreParams } from "@chainsafe/libp2p-gossipsub/score";
 import { FsDatastore } from "datastore-fs";
 import { relayerPubsub } from "./utils.js";
+import { CANAL_DÉCOUVERTE_PAIRS } from "./const.js";
 
 const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",");
 const pubsubPeerDiscoveryTopics =
-  process.env.RELAY_PUBSUB_PEER_DISCOVERY_TOPICS?.split(",") || [];
+  process.env.RELAY_PUBSUB_PEER_DISCOVERY_TOPICS?.split(",") || [
+    CANAL_DÉCOUVERTE_PAIRS,
+  ];
 
 export const obtClefPrivéeRelai = async () => {
   // Clef privée obtenue avec: console.log(server.peerId.privateKey.toString('hex'))
@@ -81,7 +84,7 @@ export const créerNœud = async () => {
   const peerDiscovery: ((components: any) => PeerDiscovery)[] = [
     pubsubPeerDiscovery({
       interval: 1000,
-      topics: pubsubPeerDiscoveryTopics, // defaults to ['_peer-discovery._p2p._pubsub']
+      topics: pubsubPeerDiscoveryTopics,
       listenOnly: false,
     }),
   ];
@@ -104,12 +107,13 @@ export const créerNœud = async () => {
         "/webtransport",
         "/p2p-circuit",
       ],
-      announce: (domaine && peerId)
-        ? [
-            `/dns4/${domaine}/tcp/443/wss/p2p/${peerId.toString()}`,
-            `/dns4/${domaine}/tcp/80/ws/p2p/${peerId.toString()}`,
-          ]
-        : undefined,
+      announce:
+        domaine && peerId
+          ? [
+              `/dns4/${domaine}/tcp/443/wss/p2p/${peerId.toString()}`,
+              `/dns4/${domaine}/tcp/80/ws/p2p/${peerId.toString()}`,
+            ]
+          : undefined,
     },
     datastore: stockage,
     transports: [
@@ -166,7 +170,7 @@ export const créerNœud = async () => {
   });
 
   await relayerPubsub({
-    pubsub: nœud.services.pubsub as GossipSub,
+    nœud: nœud as Libp2p<typeof nœud.services & { pubsub: GossipSub }>,
     toujoursRelayer: ["réseau-constellation"],
   });
 
