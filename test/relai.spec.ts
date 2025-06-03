@@ -100,6 +100,8 @@ describe("Relai", function () {
       );
       expect(abonnements2).to.not.include("canal test");
     });
+    it("Relai désabonné si pair désabonné");
+    it("Autre sujet du même pair toujours abonnée");
     it("Relai toujours abonné aux sujets par défaut", async () => {
       expect(await composantes.relai.abonnements()).to.include("canal défaut");
     });
