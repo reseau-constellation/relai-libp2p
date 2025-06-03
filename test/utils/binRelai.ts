@@ -5,7 +5,11 @@ import compression from "compression";
 
 import { créerNœud, obtAdressesNœud } from "../../src/relai.js";
 
-const nœud = await créerNœud();
+const nœud = await créerNœud({
+  canauxDéfaut: process.env.CANAUX_DÉFAUT
+    ? JSON.parse(process.env.CANAUX_DÉFAUT)
+    : undefined,
+});
 const adresses = obtAdressesNœud(nœud);
 
 const app = express();

@@ -24,7 +24,10 @@ export const préparerTest = ({
     fermer: () => Promise<void>;
   } = {
     pairs: [],
-    relai: new RelaiTest({ port: Number(PORT_SERVEUR_TEST) }),
+    relai: new RelaiTest({
+      port: Number(PORT_SERVEUR_TEST),
+      canauxDéfaut: ["canal défaut", CANAL_DÉCOUVERTE_PAIRS],
+    }),
     fermer,
   };
 

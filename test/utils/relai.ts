@@ -4,14 +4,28 @@ import type { ResultPromise } from "execa";
 
 export class RelaiTest {
   port: number;
+  canauxDéfaut?: string[];
+
   processus?: ResultPromise;
-  constructor({ port }: { port: number }) {
+  constructor({
+    port,
+    canauxDéfaut,
+  }: {
+    port: number;
+    canauxDéfaut?: string[];
+  }) {
     this.port = port;
+    this.canauxDéfaut = canauxDéfaut;
   }
 
   async lancer() {
     this.processus = execaNode({
-      env: { PORT: this.port.toString() },
+      env: {
+        PORT: this.port.toString(),
+        CANAUX_DÉFAUT: this.canauxDéfaut
+          ? JSON.stringify(this.canauxDéfaut)
+          : undefined,
+      },
     })`./dist/test/utils/binRelai.js`;
 
     this.processus.stderr?.on("data", (d) => {

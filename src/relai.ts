@@ -73,7 +73,10 @@ class ServiceClefPrivée {
   }
 }
 
-export const créerNœud = async () => {
+export const créerNœud = async ({
+  canauxDéfaut,
+}: { canauxDéfaut?: string[] } = {}) => {
+  canauxDéfaut = canauxDéfaut ?? ["réseau-constellation"];
   const clefPrivée = await obtClefPrivéeRelai();
 
   const peerId = clefPrivée ? peerIdFromPrivateKey(clefPrivée) : undefined;
@@ -171,10 +174,10 @@ export const créerNœud = async () => {
 
   await relayerPubsub({
     nœud: nœud as Libp2p<typeof nœud.services & { pubsub: GossipSub }>,
-    toujoursRelayer: ["réseau-constellation"],
+    toujoursRelayer: canauxDéfaut,
   });
 
-  nœud.services.pubsub.subscribe("réseau-constellation");
+  for (const canal of canauxDéfaut) nœud.services.pubsub.subscribe(canal);
 
   if (!peerId) {
     const clefPrivéeGénérée = nœud.services.obtClefPrivée.obtenirClef();
