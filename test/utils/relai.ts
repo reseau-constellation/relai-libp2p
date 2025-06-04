@@ -45,8 +45,10 @@ export class RelaiTest {
     const réponse = await axios.get(`http://localhost:${this.port}/adresses`);
     return réponse.data;
   }
-  async pairs(): Promise<string[]> {
-    const réponse = await axios.get(`http://localhost:${this.port}/pairs`);
+  async pairs({ sujet }: { sujet?: string } = {}): Promise<string[]> {
+    const réponse = await axios.get(
+      `http://localhost:${this.port}/pairs${sujet ? "?sujet=" + sujet : ""}`,
+    );
     return réponse.data;
   }
   async connexions(): Promise<string[]> {
