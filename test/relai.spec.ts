@@ -62,6 +62,10 @@ describe("Relai", function () {
         }
       });
       composantes.pairs[1].services.pubsub.subscribe("canal test");
+      await que(
+        () => composantes.relai.pairs({ sujet: "canal test" }),
+        (p) => p.length > 1,
+      );
       composantes.pairs[0].services.pubsub.publish(
         "canal test",
         new TextEncoder().encode("message test"),
