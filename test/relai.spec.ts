@@ -3,6 +3,9 @@ import { expect } from "aegir/chai";
 import { multiaddr } from "@multiformats/multiaddr";
 import { RelaiTest } from "./utils/relai.js";
 import { peerIdFromString } from "@libp2p/peer-id";
+import { CANAUX_DÉCOUVERTE_PAIRS_TEST } from "./utils/consts.js";
+
+const CANAL_DÉFAUT = "canal défaut";
 
 const obtIdRelai = async (relai: RelaiTest): Promise<string> => {
   const adressesRelai = await relai.adresses();
@@ -104,10 +107,55 @@ describe("Relai", function () {
       );
       expect(abonnements2).to.not.include("canal test");
     });
-    it("Relai désabonné si pair désabonné");
-    it("Autre sujet du même pair toujours abonnée");
+    it("Relai désabonné si pair désabonné", async () => {
+      composantes.pairs[0].services.pubsub.subscribe("canal test");
+      await que(
+        () => composantes.relai.abonnements(),
+        (a) => a.includes("canal test"),
+      );
+      composantes.pairs[0].services.pubsub.unsubscribe("canal test");
+      const abonnements = await que(
+        () => composantes.relai.abonnements(),
+        (a) => !a.includes("canal test"),
+      );
+      expect(abonnements).to.deep.equal([
+        ...CANAUX_DÉCOUVERTE_PAIRS_TEST,
+        CANAL_DÉFAUT,
+      ]);
+    });
+    it("Multiples sujets par pair", async () => {
+      composantes.pairs[0].services.pubsub.subscribe("canal test");
+      await que(
+        () => composantes.relai.abonnements(),
+        (a) => a.includes("canal test"),
+      );
+      composantes.pairs[0].services.pubsub.subscribe("canal test 2");
+      const abonnements = await que(
+        () => composantes.relai.abonnements(),
+        (a) => a.includes("canal test 2"),
+      );
+
+      expect(abonnements).to.deep.equal([
+        ...CANAUX_DÉCOUVERTE_PAIRS_TEST,
+        CANAL_DÉFAUT,
+        "canal test",
+        "canal test 2",
+      ]);
+
+      composantes.pairs[0].services.pubsub.unsubscribe("canal test");
+      const abonnementsAprès = await que(
+        () => composantes.relai.abonnements(),
+        (a) => a.includes("canal test 2"),
+      );
+
+      expect(abonnementsAprès).to.deep.equal([
+        ...CANAUX_DÉCOUVERTE_PAIRS_TEST,
+        CANAL_DÉFAUT,
+        "canal test 2",
+      ]);
+    });
     it("Relai toujours abonné aux sujets par défaut", async () => {
-      expect(await composantes.relai.abonnements()).to.include("canal défaut");
+      expect(await composantes.relai.abonnements()).to.include(CANAL_DÉFAUT);
     });
   });
 });

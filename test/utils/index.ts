@@ -1,11 +1,10 @@
 import { createLibp2p } from "libp2p";
-import { PORT_SERVEUR_TEST } from "./consts.js";
+import { CANAUX_DÉCOUVERTE_PAIRS_TEST, PORT_SERVEUR_TEST } from "./consts.js";
 import { RelaiTest } from "./relai.js";
 import type { Libp2pTest } from "./types";
 import { libp2p as utilsLibp2p } from "@constl/utils-tests";
 import { bootstrap } from "@libp2p/bootstrap";
 import { pubsubPeerDiscovery } from "@libp2p/pubsub-peer-discovery";
-import { CANAL_DÉCOUVERTE_PAIRS } from "@/const.js";
 
 export const préparerTest = ({
   nPairs,
@@ -26,7 +25,8 @@ export const préparerTest = ({
     pairs: [],
     relai: new RelaiTest({
       port: Number(PORT_SERVEUR_TEST),
-      canauxDéfaut: ["canal défaut", CANAL_DÉCOUVERTE_PAIRS],
+      canauxDéfaut: ["canal défaut"],
+      canauxDécouvertePairs: CANAUX_DÉCOUVERTE_PAIRS_TEST,
     }),
     fermer,
   };
@@ -43,7 +43,7 @@ export const préparerTest = ({
           }),
           pubsubPeerDiscovery({
             interval: 100,
-            topics: [CANAL_DÉCOUVERTE_PAIRS],
+            topics: CANAUX_DÉCOUVERTE_PAIRS_TEST,
             listenOnly: false,
           }),
         ],

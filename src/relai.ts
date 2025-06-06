@@ -33,13 +33,9 @@ import fs from "fs";
 import { createPeerScoreParams } from "@chainsafe/libp2p-gossipsub/score";
 import { FsDatastore } from "datastore-fs";
 import { relayerPubsub } from "./utils.js";
-import { CANAL_DÉCOUVERTE_PAIRS } from "./const.js";
+import { CANAUX_DÉCOUVERTE_PAIRS } from "./const.js";
 
 const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",");
-const pubsubPeerDiscoveryTopics =
-  process.env.RELAY_PUBSUB_PEER_DISCOVERY_TOPICS?.split(",") || [
-    CANAL_DÉCOUVERTE_PAIRS,
-  ];
 
 export const obtClefPrivéeRelai = async () => {
   // Clef privée obtenue avec: console.log(server.peerId.privateKey.toString('hex'))
@@ -75,7 +71,11 @@ class ServiceClefPrivée {
 
 export const créerNœud = async ({
   canauxDéfaut,
-}: { canauxDéfaut?: string[] } = {}) => {
+  canauxDécouvertePairs,
+}: {
+  canauxDéfaut?: string[];
+  canauxDécouvertePairs?: string[];
+} = {}) => {
   canauxDéfaut = canauxDéfaut ?? ["réseau-constellation"];
   const clefPrivée = await obtClefPrivéeRelai();
 
@@ -87,7 +87,7 @@ export const créerNœud = async ({
   const peerDiscovery: ((components: any) => PeerDiscovery)[] = [
     pubsubPeerDiscovery({
       interval: 1000,
-      topics: pubsubPeerDiscoveryTopics,
+      topics: canauxDécouvertePairs || CANAUX_DÉCOUVERTE_PAIRS,
       listenOnly: false,
     }),
   ];

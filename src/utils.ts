@@ -1,5 +1,5 @@
 import { GossipSub } from "@chainsafe/libp2p-gossipsub";
-import { Libp2p, PeerId, SubscriptionChangeData } from "@libp2p/interface";
+import { Libp2p, PeerId } from "@libp2p/interface";
 import PQueue from "p-queue";
 
 const uniques = <T>(x: T[]): T[] => [...new Set(x)];
@@ -13,12 +13,16 @@ export const relayerPubsub = async ({
 }) => {
   const pubsub = nœud.services.pubsub;
 
-  const requêtes: { [idPair: string]: string[] } = {};
+  const requêtes: { [idPair: string]: Set<string> } = {};
   const queue = new PQueue({ concurrency: 1 });
 
   const fFinale = () => {
     const sujetsDavant = pubsub.getTopics();
-    const sujetsMaintenant = uniques(Object.values(requêtes).flat());
+    const sujetsMaintenant = uniques(
+      Object.values(requêtes)
+        .map((r) => [...r])
+        .flat(),
+    );
 
     // On peut se (r)abonner à tout, parce que GossipSub filtre les sujets auxquels on est déjà abonnés
     sujetsMaintenant.forEach((s) => pubsub.subscribe(s));
@@ -29,7 +33,7 @@ export const relayerPubsub = async ({
     désabonnements.forEach((s) => pubsub.unsubscribe(s));
   };
 
-  const gérerChangementAbonnement = ({
+  /*const gérerChangementAbonnement = ({
     detail,
   }: {
     detail: SubscriptionChangeData;
@@ -39,22 +43,49 @@ export const relayerPubsub = async ({
       .map((s) => s.topic);
 
     queue.add(fFinale);
-  };
+  };*/
 
   const gérerPairDéconnecté = (é: CustomEvent<PeerId>) => {
     delete requêtes[é.detail.toString()];
     queue.add(fFinale);
   };
+  const handleReceivedRpcAvant = pubsub.handleReceivedRpc.bind(pubsub);
+  const handleReceivedRpcAprès = async (
+    ...args: Parameters<GossipSub["handleReceivedRpc"]>
+  ) => {
+    const [idPair, rpc] = args;
+    if (rpc.subscriptions.length) {
+      // Ignorer les messages qui ne changent pas les abonnements
+      const idPairChaîne = idPair.toString();
 
-  pubsub.addEventListener("subscription-change", gérerChangementAbonnement);
+      if (!requêtes[idPairChaîne]) requêtes[idPairChaîne] = new Set();
+
+      const messagesAvecSujet = rpc.subscriptions.filter((s) => s.topic);
+      const abonnements = messagesAvecSujet
+        .filter((s) => s.subscribe)
+        .map((s) => s.topic!);
+      abonnements.forEach((a) => requêtes[idPairChaîne].add(a));
+
+      const désabonnements = messagesAvecSujet
+        .filter((s) => s.subscribe === false)
+        .map((s) => s.topic!);
+
+      désabonnements.forEach((d) => requêtes[idPair.toString()].delete(d));
+      queue.add(fFinale);
+    }
+    return await handleReceivedRpcAvant(...args);
+  };
+  pubsub.handleReceivedRpc = handleReceivedRpcAprès.bind(pubsub);
+
+  // pubsub.addEventListener("subscription-change", gérerChangementAbonnement);
   nœud.addEventListener("peer:disconnect", gérerPairDéconnecté);
 
   const fonctionStopAvant = pubsub.stop.bind(pubsub);
   const fonctionStopAprès = async () => {
-    pubsub.removeEventListener(
+    /*pubsub.removeEventListener(
       "subscription-change",
       gérerChangementAbonnement,
-    );
+    );*/
     nœud.removeEventListener("peer:disconnect", gérerPairDéconnecté);
     await queue.onIdle();
     await fonctionStopAvant();

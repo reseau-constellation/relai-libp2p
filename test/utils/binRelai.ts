@@ -9,6 +9,9 @@ const nœud = await créerNœud({
   canauxDéfaut: process.env.CANAUX_DÉFAUT
     ? JSON.parse(process.env.CANAUX_DÉFAUT)
     : undefined,
+  canauxDécouvertePairs: process.env.CANAUX_DÉCOUVERTE_PAIRS
+    ? JSON.parse(process.env.CANAUX_DÉCOUVERTE_PAIRS)
+    : undefined,
 });
 const adresses = obtAdressesNœud(nœud);
 
