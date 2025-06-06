@@ -51,3 +51,5 @@ app.get("/pairs", async (request: Request<{ sujet: string }>, response) => {
 });
 
 app.listen(Number(process.env.PORT));
+
+console.log("prêt");
