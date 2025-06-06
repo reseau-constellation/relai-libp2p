@@ -32,14 +32,18 @@ export class RelaiTest {
         CANAUX_DÉCOUVERTE_PAIRS: JSON.stringify(this.canauxDécouvertePairs),
       },
     })`./dist/test/utils/binRelai.js`;
-
+    const promessePrêt = new Promise<void>((résoudre) => {
+      this.processus!.stdout?.on("data", (d) => {
+        if (d.toString() === "prêt") résoudre();
+      });
+    });
     this.processus.stderr?.on("data", (d) => {
       console.warn(d.toString());
     });
     this.processus.stdout?.on("data", (d) => {
-      console.log(d.toString());
+      if (d.toString() !== "prêt") console.log(d.toString());
     });
-    await new Promise((résoudre) => setTimeout(résoudre, 3000));
+    await promessePrêt;
   }
 
   async abonnements(): Promise<string[]> {
