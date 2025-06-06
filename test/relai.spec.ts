@@ -19,17 +19,16 @@ describe("Relai", function () {
   it("Connexion au relai", async () => {
     const idRelai = await obtIdRelai(composantes.relai);
 
-    const pairs1 = await que(
-      () => composantes.pairs[0].getPeers(),
-      (pairs) => pairs.length > 0,
+    const connexionsPairs = await Promise.all(
+      composantes.pairs.map(async (p) =>
+        que(
+          () => p.getPeers(),
+          (pairs) => pairs.length > 0,
+        ),
+      ),
     );
-    expect(pairs1.map((p) => p.toString())).to.include(idRelai);
-
-    const pairs2 = await que(
-      () => composantes.pairs[1].getPeers(),
-      (pairs) => pairs.length > 0,
-    );
-    expect(pairs2.map((p) => p.toString())).to.include(idRelai);
+    expect(connexionsPairs[0].map((p) => p.toString())).to.include(idRelai);
+    expect(connexionsPairs[1].map((p) => p.toString())).to.include(idRelai);
   });
 
   it("Connexions entre pairs", async () => {
