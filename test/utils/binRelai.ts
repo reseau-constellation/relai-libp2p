@@ -2,9 +2,10 @@ import express, { Request } from "express";
 import path from "path";
 import serveStatic from "serve-static";
 import compression from "compression";
-
+import { logger } from "@libp2p/logger";
 import { créerNœud, obtAdressesNœud } from "../../src/relai.js";
 
+const log = logger("relai-libp2p");
 const nœud = await créerNœud({
   canauxDéfaut: process.env.CANAUX_DÉFAUT
     ? JSON.parse(process.env.CANAUX_DÉFAUT)
@@ -12,8 +13,10 @@ const nœud = await créerNœud({
   canauxDécouvertePairs: process.env.CANAUX_DÉCOUVERTE_PAIRS
     ? JSON.parse(process.env.CANAUX_DÉCOUVERTE_PAIRS)
     : undefined,
+  journal: log,
 });
-const adresses = obtAdressesNœud(nœud);
+
+const adresses = obtAdressesNœud(nœud, log);
 
 const app = express();
 

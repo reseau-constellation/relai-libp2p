@@ -33,6 +33,7 @@
   "devDependencies": {
     "@constl/utils-tests": "^1.6.15",
     "@eslint/js": "^9.21.0",
+    "@libp2p/logger": "^5.1.19",
     "@multiformats/multiaddr": "^12.4.0",
     "@types/compression": "^1.7.5",
     "@types/crypto-js": "^4.2.2",

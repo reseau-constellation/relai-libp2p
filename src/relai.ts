@@ -72,11 +72,14 @@ class ServiceClefPrivée {
 export const créerNœud = async ({
   canauxDéfaut,
   canauxDécouvertePairs,
+  journal,
 }: {
   canauxDéfaut?: string[];
   canauxDécouvertePairs?: string[];
+  journal?: (msg: string) => void;
 } = {}) => {
   canauxDéfaut = canauxDéfaut ?? ["réseau-constellation"];
+  journal = journal ?? console.log;
   const clefPrivée = await obtClefPrivéeRelai();
 
   const peerId = clefPrivée ? peerIdFromPrivateKey(clefPrivée) : undefined;
@@ -185,35 +188,38 @@ export const créerNœud = async ({
     fs.appendFileSync(".env", `\nCLEF_PRIVEE_RELAI=${clefTexte}`);
   }
   nœud.addEventListener("peer:discovery", (x) => {
-    console.log(
-      "Découvert : ",
-      x.detail.id.toString(),
-      x.detail.multiaddrs.map((a) => a.toString()),
+    journal(
+      "Découvert : " +
+        x.detail.id.toString() +
+        x.detail.multiaddrs.map((a) => a.toString()),
     );
   });
   nœud.addEventListener("peer:connect", () => {
-    console.log("Pairs: ", nœud.getPeers());
+    journal("Pairs: " + nœud.getPeers());
   });
   nœud.addEventListener("peer:disconnect", () => {
-    console.log("Pairs: ", nœud.getPeers());
+    journal("Pairs: " + nœud.getPeers());
   });
   nœud.services.relay.addEventListener("relay:reservation", (x) => {
-    console.log("Réservation ", x.detail.addr.toString());
+    journal("Réservation " + x.detail.addr.toString());
   });
   nœud.services.relay.addEventListener("relay:advert:success", () => {
-    console.log("relay:advert:success");
+    journal("relay:advert:success");
   });
   nœud.services.relay.addEventListener("relay:advert:error", () => {
-    console.log("relay:advert:error");
+    journal("relay:advert:error");
   });
   return nœud;
 };
 
-export const obtAdressesNœud = (nœud: Libp2p): string[] => {
-  console.log(`Nœud lancé avec id : ${nœud.peerId.toString()}`);
-  console.log(
-    "Le nœud écoute sur : ",
-    nœud.getMultiaddrs().map((ma) => ma.toString()),
+export const obtAdressesNœud = (
+  nœud: Libp2p,
+  journal?: (msg: string) => void,
+): string[] => {
+  journal = journal ?? console.log;
+  journal(`Nœud lancé avec id : ${nœud.peerId.toString()}`);
+  journal(
+    "Le nœud écoute sur : " + nœud.getMultiaddrs().map((ma) => ma.toString()),
   );
   return nœud.getMultiaddrs().map((ma) => ma.toString());
   // génère une adresse de manière déterministe : /ip4/127.0.0.1/tcp/12345/ws/p2p/12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE
