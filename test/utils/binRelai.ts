@@ -4,6 +4,7 @@ import serveStatic from "serve-static";
 import compression from "compression";
 import { logger } from "@libp2p/logger";
 import { créerNœud, obtAdressesNœud } from "../../src/relai.js";
+import { CODE_PRÊT } from "./consts.js";
 
 const log = logger("relai-libp2p");
 const nœud = await créerNœud({
@@ -52,4 +53,4 @@ app.get("/pairs", async (request: Request<{ sujet: string }>, response) => {
 
 app.listen(Number(process.env.PORT));
 
-console.log("prêt");
+console.log(CODE_PRÊT);

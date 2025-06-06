@@ -1,6 +1,7 @@
 import axios from "axios";
 import { execaNode } from "execa";
 import type { ResultPromise } from "execa";
+import { CODE_PRÊT } from "./consts.js";
 
 export class RelaiTest {
   port: number;
@@ -34,14 +35,14 @@ export class RelaiTest {
     })`./dist/test/utils/binRelai.js`;
     const promessePrêt = new Promise<void>((résoudre) => {
       this.processus!.stdout?.on("data", (d) => {
-        if (d.toString() === "prêt") résoudre();
+        if (d.toString().includes(CODE_PRÊT)) résoudre();
       });
     });
     this.processus.stderr?.on("data", (d) => {
       console.warn(d.toString());
     });
     this.processus.stdout?.on("data", (d) => {
-      if (d.toString() !== "prêt") console.log(d.toString());
+      if (!d.toString().includes(CODE_PRÊT)) console.log(d.toString());
     });
     await promessePrêt;
   }
