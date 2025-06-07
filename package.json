@@ -89,7 +89,7 @@
     "libp2p": "^2.8.0",
     "p-queue": "^8.1.0",
     "rimraf": "^6.0.1",
-    "serve-static": "^1.16.2",
+    "serve-static": "^2.0.0",
     "uint8arrays": "^5.1.0",
     "uuid": "^11.1.0",
     "wherearewe": "^2.0.1"
