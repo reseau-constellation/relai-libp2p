@@ -134,7 +134,7 @@ importers:
         version: 10.0.10
       '@types/node':
         specifier: ^22.13.9
-        version: 22.16.5
+        version: 22.17.0
       '@types/serve-static':
         specifier: ^1.15.7
         version: 1.15.8
@@ -170,7 +170,7 @@ importers:
         version: 0.5.21
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.16.5)(typescript@5.8.3)
+        version: 10.9.2(@types/node@22.17.0)(typescript@5.8.3)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2279,8 +2279,8 @@ packages:
   '@types/node-forge@1.3.13':
     resolution: {integrity: sha512-zePQJSW5QkwSHKRApqWCVKeKoSOt4xvEnLENZPjyvm9Ezdf/EyDeJM7jqLzOwjVICQQzvLZ63T55MKdJB5H6ww==}
 
-  '@types/node@22.16.5':
-    resolution: {integrity: sha512-bJFoMATwIGaxxx8VJPeM8TonI8t579oRvgAuT8zFugJsJZgzqv0Fu8Mhp68iecjzG7cnN3mO2dJQ5uUM2EFrgQ==}
+  '@types/node@22.17.0':
+    resolution: {integrity: sha512-bbAKTCqX5aNVryi7qXVMi+OkB3w/OyblodicMbvE38blyAz7GxXf6XYhklokijuPwwVg9sDLKRxt0ZHXQwZVfQ==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -2908,10 +2908,10 @@ packages:
   babel-plugin-transform-inline-environment-variables@0.4.4:
     resolution: {integrity: sha512-bJILBtn5a11SmtR2j/3mBOjX4K3weC6cq+NNZ7hG22wCAqpc3qtj/iN7dSe9HDiS46lgp1nHsQgeYrea/RUe+g==}
 
-  babel-preset-current-node-syntax@1.1.0:
-    resolution: {integrity: sha512-ldYss8SbBlWva1bs28q78Ju5Zq1F+8BrqBZZ0VFhLBvhh6lCpC2o3gDJi/5DRLs9FgYZCnmPYIVFU4lRXCkyUw==}
+  babel-preset-current-node-syntax@1.1.1:
+    resolution: {integrity: sha512-23fWKohMTvS5s0wwJKycOe0dBdCwQ6+iiLaNR9zy8P13mtFRFM9qLLX6HJX5DL2pi/FNDf3fCQHM4FIMoHH/7w==}
     peerDependencies:
-      '@babel/core': ^7.0.0
+      '@babel/core': ^7.0.0 || ^8.0.0-0
 
   babel-preset-jest@29.6.3:
     resolution: {integrity: sha512-0B3bhxR6snWXJZtR/RliHTDPRgn1sNHOR0yVtq/IiQFyuOVjFS+wuio/R4gSNkyYmKmJB4wGZv2NZanmKmTnNA==}
@@ -5935,6 +5935,7 @@ packages:
 
   metro-react-native-babel-preset@0.64.0:
     resolution: {integrity: sha512-HcZ0RWQRuJfpPiaHyFQJzcym+/dDIVUPwUAXWoub/C4GkGu+mPjp8vqK6g0FxokCnnI2TK0gZTza2IDfiNNscQ==}
+    deprecated: Use @react-native/babel-preset instead
     peerDependencies:
       '@babel/core': '*'
 
@@ -10333,14 +10334,14 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       jest-mock: 29.7.0
 
   '@jest/fake-timers@29.7.0':
     dependencies:
       '@jest/types': 29.6.3
       '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
@@ -10374,7 +10375,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
@@ -11481,7 +11482,7 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/chai-as-promised@7.1.8':
     dependencies:
@@ -11500,11 +11501,11 @@ snapshots:
   '@types/compression@1.8.1':
     dependencies:
       '@types/express': 5.0.3
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/crypto-js@4.2.2': {}
 
@@ -11514,13 +11515,13 @@ snapshots:
 
   '@types/dns-packet@5.6.5':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/estree@1.0.8': {}
 
   '@types/express-serve-static-core@5.0.6':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.5
@@ -11536,11 +11537,11 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/graceful-fs@4.1.9':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/hast@3.0.4':
     dependencies:
@@ -11583,13 +11584,13 @@ snapshots:
   '@types/multicast-dns@7.2.4':
     dependencies:
       '@types/dns-packet': 5.6.5
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/node-forge@1.3.13':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
-  '@types/node@22.16.5':
+  '@types/node@22.17.0':
     dependencies:
       undici-types: 6.21.0
 
@@ -11608,12 +11609,12 @@ snapshots:
   '@types/send@0.17.5':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/serve-static@1.15.8':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       '@types/send': 0.17.5
 
   '@types/sinon@17.0.4':
@@ -11634,7 +11635,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -11644,7 +11645,7 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
     optional: true
 
   '@typescript-eslint/eslint-plugin@8.38.0(@typescript-eslint/parser@8.38.0(eslint@9.32.0)(typescript@5.8.3))(eslint@9.32.0)(typescript@5.8.3)':
@@ -11959,7 +11960,7 @@ snapshots:
       '@types/chai-string': 1.4.5
       '@types/chai-subset': 1.3.6(@types/chai@4.3.20)
       '@types/mocha': 10.0.10
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       '@typescript-eslint/parser': 8.36.0(eslint@9.32.0)(typescript@5.8.3)
       buffer: 6.0.3
       bytes: 3.1.2
@@ -12035,7 +12036,7 @@ snapshots:
       typedoc-plugin-mermaid: 1.12.0(typedoc@0.28.7(typescript@5.8.3))
       typedoc-plugin-missing-exports: 4.0.0(typedoc@0.28.7(typescript@5.8.3))
       typescript: 5.8.3
-      typescript-docs-verifier: 2.5.3(@types/node@22.16.5)(typescript@5.8.3)
+      typescript-docs-verifier: 2.5.3(@types/node@22.17.0)(typescript@5.8.3)
       wherearewe: 2.0.1
       yargs: 17.7.2
       yargs-parser: 21.1.1
@@ -12370,7 +12371,7 @@ snapshots:
 
   babel-plugin-transform-inline-environment-variables@0.4.4: {}
 
-  babel-preset-current-node-syntax@1.1.0(@babel/core@7.28.0):
+  babel-preset-current-node-syntax@1.1.1(@babel/core@7.28.0):
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.28.0)
@@ -12393,7 +12394,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.0
       babel-plugin-jest-hoist: 29.6.3
-      babel-preset-current-node-syntax: 1.1.0(@babel/core@7.28.0)
+      babel-preset-current-node-syntax: 1.1.1(@babel/core@7.28.0)
 
   balanced-match@1.0.2: {}
 
@@ -12761,7 +12762,7 @@ snapshots:
 
   chrome-launcher@0.15.2:
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -12770,7 +12771,7 @@ snapshots:
 
   chromium-edge-launcher@0.2.0:
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -15466,7 +15467,7 @@ snapshots:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
@@ -15476,7 +15477,7 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
       '@types/graceful-fs': 4.1.9
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -15503,7 +15504,7 @@ snapshots:
   jest-mock@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       jest-util: 29.7.0
 
   jest-regex-util@29.6.3: {}
@@ -15511,7 +15512,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -15528,7 +15529,7 @@ snapshots:
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -18726,14 +18727,14 @@ snapshots:
       picomatch: 4.0.2
       typescript: 5.8.3
 
-  ts-node@10.9.2(@types/node@22.16.5)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@22.17.0)(typescript@5.8.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -18890,13 +18891,13 @@ snapshots:
       typescript: 5.8.3
       yaml: 2.8.0
 
-  typescript-docs-verifier@2.5.3(@types/node@22.16.5)(typescript@5.8.3):
+  typescript-docs-verifier@2.5.3(@types/node@22.17.0)(typescript@5.8.3):
     dependencies:
       chalk: 4.1.2
       fs-extra: 10.1.0
       ora: 5.4.1
       strip-ansi: 7.1.0
-      ts-node: 10.9.2(@types/node@22.16.5)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@22.17.0)(typescript@5.8.3)
       tsconfig: 7.0.0
       typescript: 5.8.3
       yargs: 17.7.2
