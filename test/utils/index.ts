@@ -55,7 +55,6 @@ export const préparerTest = ({
           // rien à faire
         }
       });
-      // @ts-expect-error  quelque chose avec gossipsub
       composantes.pairs.push(pair);
     }
   });

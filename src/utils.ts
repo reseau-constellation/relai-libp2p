@@ -33,18 +33,6 @@ export const relayerPubsub = async ({
     désabonnements.forEach((s) => pubsub.unsubscribe(s));
   };
 
-  /*const gérerChangementAbonnement = ({
-    detail,
-  }: {
-    detail: SubscriptionChangeData;
-  }) => {
-    requêtes[detail.peerId.toString()] = detail.subscriptions
-      .filter((s) => s.subscribe)
-      .map((s) => s.topic);
-
-    queue.add(fFinale);
-  };*/
-
   const gérerPairDéconnecté = (é: CustomEvent<PeerId>) => {
     delete requêtes[é.detail.toString()];
     queue.add(fFinale);
@@ -77,15 +65,10 @@ export const relayerPubsub = async ({
   };
   pubsub.handleReceivedRpc = handleReceivedRpcAprès.bind(pubsub);
 
-  // pubsub.addEventListener("subscription-change", gérerChangementAbonnement);
   nœud.addEventListener("peer:disconnect", gérerPairDéconnecté);
 
   const fonctionStopAvant = pubsub.stop.bind(pubsub);
   const fonctionStopAprès = async () => {
-    /*pubsub.removeEventListener(
-      "subscription-change",
-      gérerChangementAbonnement,
-    );*/
     nœud.removeEventListener("peer:disconnect", gérerPairDéconnecté);
     await queue.onIdle();
     await fonctionStopAvant();
