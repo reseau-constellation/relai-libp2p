@@ -2,9 +2,9 @@ import { createLibp2p } from "libp2p";
 import { CANAUX_DÉCOUVERTE_PAIRS_TEST, PORT_SERVEUR_TEST } from "./consts.js";
 import { RelaiTest } from "./relai.js";
 import type { Libp2pTest } from "./types";
-import { libp2p as utilsLibp2p } from "@constl/utils-tests";
 import { bootstrap } from "@libp2p/bootstrap";
 import { pubsubPeerDiscovery } from "@libp2p/pubsub-peer-discovery";
+import { DefaultLibp2pOptions } from "./libp2p.js";
 
 export const préparerTest = ({
   nPairs,
@@ -35,7 +35,7 @@ export const préparerTest = ({
     await composantes.relai.lancer();
     for (const _ of Array(nPairs)) {
       const pair = await createLibp2p({
-        ...utilsLibp2p.DefaultLibp2pOptions,
+        ...DefaultLibp2pOptions,
         peerDiscovery: [
           bootstrap({
             list: await composantes.relai.adresses(),
