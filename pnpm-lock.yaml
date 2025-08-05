@@ -146,7 +146,7 @@ importers:
         version: 1.11.0
       core-js:
         specifier: ^3.44.0
-        version: 3.44.0
+        version: 3.45.0
       eslint:
         specifier: ^9.32.0
         version: 9.32.0
@@ -3077,8 +3077,11 @@ packages:
   core-js-compat@3.44.0:
     resolution: {integrity: sha512-JepmAj2zfl6ogy34qfWtcE7nHKAJnKsQFRn++scjVS2bZFllwptzw61BZcZFYBPpUznLfAvh0LGhxKppk04ClA==}
 
-  core-js@3.44.0:
-    resolution: {integrity: sha512-aFCtd4l6GvAXwVEh3XbbVqJGHDJt0OZRa+5ePGx3LLwi12WfexqQxcsohb2wgsa/92xtl19Hd66G/L+TaAxDMw==}
+  core-js-compat@3.45.0:
+    resolution: {integrity: sha512-gRoVMBawZg0OnxaVv3zpqLLxaHmsubEGyTnqdpI/CEBvX4JadI1dMSHxagThprYRtSVbuQxvi6iUatdPxohHpA==}
+
+  core-js@3.45.0:
+    resolution: {integrity: sha512-c2KZL9lP4DjkN3hk/an4pWn5b5ZefhRJnAc42n6LJ19kSnbeRbdQZE5dSeE2LBol1OwJD3X1BQvFTAsa8ReeDA==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -3932,8 +3935,8 @@ packages:
   flow-enums-runtime@0.0.6:
     resolution: {integrity: sha512-3PYnM29RFXwvAN6Pc/scUfkI7RwhQ/xqyLUyPNlXUp9S40zI8nup9tUSrTLSVnWGBN38FNiGWbwZOB6uR4OGdw==}
 
-  flow-parser@0.277.1:
-    resolution: {integrity: sha512-86F5PGl+OrFvCzyK04id9Yf9rxFB8485GPs5sexB4cVLOXmpHbSi1/dYiaemI53I85CpImBu/qHVmZnGQflgmw==}
+  flow-parser@0.278.0:
+    resolution: {integrity: sha512-9oUcYDHf9n+E/t0FXndgBqGbaUsGEcmWqIr1ldqCzTzctsJV5E/bHusOj4ThB72Ss2mqWpLFNz0+o2c1O8J6+A==}
     engines: {node: '>=0.4.0'}
 
   follow-redirects@1.15.10:
@@ -8728,7 +8731,7 @@ snapshots:
       babel-plugin-polyfill-corejs2: 0.4.14(@babel/core@7.28.0)
       babel-plugin-polyfill-corejs3: 0.10.6(@babel/core@7.28.0)
       babel-plugin-polyfill-regenerator: 0.6.5(@babel/core@7.28.0)
-      core-js-compat: 3.44.0
+      core-js-compat: 3.45.0
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -11156,7 +11159,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.0
       '@babel/helper-define-polyfill-provider': 0.6.5(@babel/core@7.28.0)
-      core-js-compat: 3.44.0
+      core-js-compat: 3.45.0
     transitivePeerDependencies:
       - supports-color
 
@@ -11743,7 +11746,11 @@ snapshots:
     dependencies:
       browserslist: 4.25.1
 
-  core-js@3.44.0: {}
+  core-js-compat@3.45.0:
+    dependencies:
+      browserslist: 4.25.1
+
+  core-js@3.45.0: {}
 
   core-util-is@1.0.3: {}
 
@@ -12906,7 +12913,7 @@ snapshots:
 
   flow-enums-runtime@0.0.6: {}
 
-  flow-parser@0.277.1: {}
+  flow-parser@0.278.0: {}
 
   follow-redirects@1.15.10: {}
 
@@ -14031,7 +14038,7 @@ snapshots:
       '@babel/register': 7.27.1(@babel/core@7.28.0)
       babel-core: 7.0.0-bridge.0(@babel/core@7.28.0)
       chalk: 4.1.2
-      flow-parser: 0.277.1
+      flow-parser: 0.278.0
       graceful-fs: 4.2.11
       micromatch: 4.0.8
       neo-async: 2.6.2
