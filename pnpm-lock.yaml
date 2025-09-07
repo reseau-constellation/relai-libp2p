@@ -67,7 +67,7 @@ importers:
         version: 5.0.4
       blockstore-level:
         specifier: ^2.0.3
-        version: 2.0.3
+        version: 2.0.5
       compression:
         specifier: ^1.8.1
         version: 1.8.1
@@ -2753,9 +2753,8 @@ packages:
   blockstore-core@5.0.4:
     resolution: {integrity: sha512-v7wtBEpW2J/kKljN7Z2u4Tnwr7qwnOvW1aPVfynIxEdejlVC7gg4z9k6iJt7n5XMGkdNnH4HOmVcjYcaMnu7yg==}
 
-  blockstore-level@2.0.3:
-    resolution: {integrity: sha512-/GqkHMJDP10fg3Db1Jrn7k2i69TquhlI1TXfs2CJDVb98gBKRHT1nuXjx8r8DS9pK8CDxGkfQJ+DJSmghot4RQ==}
-    deprecated: This package is deprecated. Instead, use blockstore-fs in Node.js, and blockstore-idb in browsers
+  blockstore-level@2.0.5:
+    resolution: {integrity: sha512-UxPCb6OKXxrImXo//sOg/sD1sMW6C7wMAja9Rh9xllJKPBsxnilui49B0nrcf9YM+oVyRDBnAkddLEEQX6PUmw==}
 
   body-parser@2.2.0:
     resolution: {integrity: sha512-02qvAaxv8tp7fBa/mw1ga98OGm+eCbqzJOKoRt70sLmfEEi+jyBYVTDGfCL/k06/4EMk/z01gCe7HoCH/f2LTg==}
@@ -6573,6 +6572,9 @@ packages:
 
   race-signal@1.1.3:
     resolution: {integrity: sha512-Mt2NznMgepLfORijhQMncE26IhkmjEphig+/1fKC0OtaKwys/gpvpmswSjoN01SS+VO951mj0L4VIDXdXsjnfA==}
+
+  race-signal@2.0.0:
+    resolution: {integrity: sha512-P31bLhE4ByBX/70QDXMutxnqgwrF1WUXea1O8DXuviAgkdbQ1iQMQotNgzJIBC9yUSn08u/acZrMUhgw7w6GpA==}
 
   ramda@0.27.2:
     resolution: {integrity: sha512-SbiLPU40JuJniHexQSAgad32hfwd+DRUdwF2PlVuI5RZD0/vahUco7R8vD86J/tcEKKF9vZrUVwgtmGCqlCKyA==}
@@ -11653,14 +11655,14 @@ snapshots:
       it-merge: 3.0.12
       multiformats: 13.3.7
 
-  blockstore-level@2.0.3:
+  blockstore-level@2.0.5:
     dependencies:
       blockstore-core: 5.0.4
       interface-blockstore: 5.3.2
       interface-store: 6.0.3
       level: 8.0.1
-      multiformats: 13.3.7
-      race-signal: 1.1.3
+      multiformats: 13.4.0
+      race-signal: 2.0.0
 
   body-parser@2.2.0:
     dependencies:
@@ -13856,7 +13858,7 @@ snapshots:
   interface-blockstore@5.3.2:
     dependencies:
       interface-store: 6.0.3
-      multiformats: 13.3.7
+      multiformats: 13.4.0
 
   interface-datastore@8.3.2:
     dependencies:
@@ -16295,6 +16297,8 @@ snapshots:
       abort-error: 1.0.1
 
   race-signal@1.1.3: {}
+
+  race-signal@2.0.0: {}
 
   ramda@0.27.2: {}
 
