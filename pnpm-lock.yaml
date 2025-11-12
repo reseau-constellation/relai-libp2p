@@ -87,8 +87,8 @@ importers:
         specifier: ^2.10.0
         version: 2.10.0
       p-queue:
-        specifier: ^8.1.1
-        version: 8.1.1
+        specifier: ^9.0.0
+        version: 9.0.0
       rimraf:
         specifier: ^6.1.0
         version: 6.1.0
