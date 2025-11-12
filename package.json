@@ -84,7 +84,7 @@
     "express": "^5.1.0",
     "genversion": "^3.2.0",
     "libp2p": "^2.10.0",
-    "p-queue": "^8.1.1",
+    "p-queue": "^9.0.0",
     "rimraf": "^6.1.0",
     "serve-static": "^2.2.0",
     "uint8arrays": "^5.1.0",
