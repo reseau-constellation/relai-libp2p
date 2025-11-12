@@ -37,7 +37,7 @@ import { CANAUX_DÉCOUVERTE_PAIRS } from "./const.js";
 
 const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",");
 
-export const obtClefPrivéeRelai = async () => {
+export const obtClefPrivéeRelai = async (): Promise<PrivateKey | undefined> => {
   // Clef privée obtenue avec: console.log(server.peerId.privateKey.toString('hex'))
   // exemple : "08011240821cb6bc3d4547fcccb513e82e4d718089f8a166b23ffcd4a436754b6b0774cf07447d1693cd10ce11ef950d7517bad6e9472b41a927cd17fc3fb23f8c70cd99"
   const relayPrivKey = process.env.CLEF_PRIVEE_RELAI;
