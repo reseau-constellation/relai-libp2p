@@ -38,8 +38,17 @@ https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-20-04
 
-pm2 start pnpm --name serveur  -- lancer
+// pm2 start pnpm --name serveur  -- lancer
 
+```lancer.sh
+#!/bin/bash
+
+cd ~/relai-libp2p
+pnpm lancer
+```
+nvm use stable
+
+pm2 start lancer.sh --name serveur
 
 /etc/nginx/sites-available/MON_DOMAINE
 ```
