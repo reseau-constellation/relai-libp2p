@@ -61,6 +61,7 @@ export const relayerPubsub = async ({
       désabonnements.forEach((d) => requêtes[idPair.toString()].delete(d));
       queue.add(fFinale);
     }
+    await queue.onIdle();
     return await handleReceivedRpcAvant(...args);
   };
   pubsub.handleReceivedRpc = handleReceivedRpcAprès.bind(pubsub);
