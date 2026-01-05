@@ -88,7 +88,7 @@ importers:
         version: 2.10.0
       p-queue:
         specifier: ^9.0.0
-        version: 9.0.1
+        version: 9.1.0
       rimraf:
         specifier: ^6.1.0
         version: 6.1.2
@@ -6266,8 +6266,8 @@ packages:
     resolution: {integrity: sha512-aNZ+VfjobsWryoiPnEApGGmf5WmNsCo9xu8dfaYamG5qaLP7ClhLN6NgsFe6SwJ2UbLEBK5dv9x8Mn5+RVhMWQ==}
     engines: {node: '>=18'}
 
-  p-queue@9.0.1:
-    resolution: {integrity: sha512-RhBdVhSwJb7Ocn3e8ULk4NMwBEuOxe+1zcgphUy9c2e5aR/xbEsdVXxHJ3lynw6Qiqu7OINEyHlZkiblEpaq7w==}
+  p-queue@9.1.0:
+    resolution: {integrity: sha512-O/ZPaXuQV29uSLbxWBGGZO1mCQXV2BLIwUr59JUU9SoH76mnYvtms7aafH/isNSNGwuEfP6W/4xD0/TJXxrizw==}
     engines: {node: '>=20'}
 
   p-reduce@2.1.0:
@@ -10114,7 +10114,7 @@ snapshots:
       buffer: 6.0.3
       dns-packet: 5.6.1
       hashlru: 2.3.0
-      p-queue: 9.0.1
+      p-queue: 9.1.0
       progress-events: 1.0.1
       uint8arrays: 5.1.0
 
@@ -11278,7 +11278,7 @@ snapshots:
       npm-package-json-lint: 9.0.0(typescript@5.8.3)
       nyc: 17.1.0
       p-map: 7.0.4
-      p-queue: 9.0.1
+      p-queue: 9.1.0
       p-retry: 7.1.0
       pascalcase: 2.0.0
       path: 0.12.7
@@ -15963,7 +15963,7 @@ snapshots:
       eventemitter3: 5.0.1
       p-timeout: 6.1.4
 
-  p-queue@9.0.1:
+  p-queue@9.1.0:
     dependencies:
       eventemitter3: 5.0.1
       p-timeout: 7.0.1
