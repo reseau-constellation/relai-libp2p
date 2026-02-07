@@ -30,7 +30,7 @@
     "postbuild": "./dist/**/*"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^10.0.0",
     "@libp2p/logger": "^5.2.0",
     "@multiformats/multiaddr": "^12.5.1",
     "@types/compression": "^1.8.1",
@@ -43,7 +43,7 @@
     "aegir": "^47.0.24",
     "axios": "^1.13.2",
     "core-js": "^3.46.0",
-    "eslint": "^9.39.1",
+    "eslint": "^10.0.0",
     "execa": "^9.6.0",
     "globals": "^17.0.0",
     "mocha": "^11.7.5",
