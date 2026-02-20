@@ -77,7 +77,7 @@
     "@libp2p/websockets": "^9.2.19",
     "@libp2p/webtransport": "^5.0.51",
     "blockstore-core": "^5.0.4",
-    "blockstore-level": "^2.0.5",
+    "blockstore-level": "^3.0.0",
     "compression": "^1.8.1",
     "datastore-fs": "^10.0.6",
     "events": "^3.3.0",
