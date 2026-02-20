@@ -79,7 +79,7 @@
     "blockstore-core": "^5.0.4",
     "blockstore-level": "^2.0.5",
     "compression": "^1.8.1",
-    "datastore-fs": "^10.0.6",
+    "datastore-fs": "^11.0.0",
     "events": "^3.3.0",
     "express": "^5.1.0",
     "genversion": "^3.2.0",
