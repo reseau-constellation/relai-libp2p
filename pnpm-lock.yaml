@@ -112,8 +112,8 @@ importers:
         specifier: ^5.2.0
         version: 5.2.0
       '@multiformats/multiaddr':
-        specifier: ^12.5.1
-        version: 12.5.1
+        specifier: ^13.0.0
+        version: 13.0.1
       '@types/compression':
         specifier: ^1.8.1
         version: 1.8.1
@@ -9849,7 +9849,7 @@ snapshots:
       it-map: 3.1.4
       it-pipe: 3.0.1
       it-take: 3.0.9
-      multiformats: 13.4.1
+      multiformats: 13.4.2
       p-defer: 4.0.1
       progress-events: 1.0.1
       protons-runtime: 5.6.0
@@ -9882,7 +9882,7 @@ snapshots:
       interface-blockstore: 5.3.2
       interface-datastore: 8.3.2
       interface-store: 6.0.3
-      multiformats: 13.4.1
+      multiformats: 13.4.2
       progress-events: 1.0.1
 
   '@helia/utils@1.4.0':
@@ -9909,7 +9909,7 @@ snapshots:
       it-merge: 3.0.12
       libp2p: 2.10.0
       mortice: 3.3.1
-      multiformats: 13.4.1
+      multiformats: 13.4.2
       p-defer: 4.0.1
       progress-events: 1.0.1
       uint8arrays: 5.1.0
@@ -9930,16 +9930,16 @@ snapshots:
   '@ipld/dag-cbor@9.2.5':
     dependencies:
       cborg: 4.3.0
-      multiformats: 13.4.1
+      multiformats: 13.4.2
 
   '@ipld/dag-json@10.2.5':
     dependencies:
       cborg: 4.3.0
-      multiformats: 13.4.1
+      multiformats: 13.4.2
 
   '@ipld/dag-pb@4.1.5':
     dependencies:
-      multiformats: 13.4.1
+      multiformats: 13.4.2
 
   '@ipshipyard/node-datachannel@0.26.6':
     dependencies:
@@ -10174,7 +10174,7 @@ snapshots:
       '@noble/hashes': 1.8.0
       asn1js: 3.0.6
       interface-datastore: 8.3.2
-      multiformats: 13.4.1
+      multiformats: 13.4.2
       sanitize-filename: 1.6.3
       uint8arrays: 5.1.0
 
@@ -10203,7 +10203,7 @@ snapshots:
       '@libp2p/interface': 2.11.0
       '@libp2p/peer-id': 5.1.9
       '@libp2p/utils': 6.7.2
-      multiformats: 13.4.1
+      multiformats: 13.4.2
 
   '@libp2p/peer-id@5.1.9':
     dependencies:
@@ -10219,7 +10219,7 @@ snapshots:
       '@libp2p/peer-id': 5.1.9
       '@libp2p/utils': 6.7.2
       '@multiformats/multiaddr': 12.5.1
-      multiformats: 13.4.1
+      multiformats: 13.4.2
       protons-runtime: 5.6.0
       uint8-varint: 2.0.4
       uint8arraylist: 2.4.8
@@ -10237,7 +10237,7 @@ snapshots:
       it-all: 3.0.9
       main-event: 1.0.1
       mortice: 3.3.1
-      multiformats: 13.4.1
+      multiformats: 13.4.2
       protons-runtime: 5.6.0
       uint8arraylist: 2.4.8
       uint8arrays: 5.1.0
@@ -10275,7 +10275,7 @@ snapshots:
       it-pipe: 3.0.1
       it-pushable: 3.2.3
       main-event: 1.0.1
-      multiformats: 13.4.1
+      multiformats: 13.4.2
       p-queue: 8.1.1
       uint8arraylist: 2.4.8
       uint8arrays: 5.1.0
@@ -10435,7 +10435,7 @@ snapshots:
       '@chainsafe/netmask': 2.0.0
       '@multiformats/dns': 1.0.10
       abort-error: 1.0.1
-      multiformats: 13.4.1
+      multiformats: 13.4.2
       uint8-varint: 2.0.4
       uint8arrays: 5.1.0
 
@@ -14258,7 +14258,7 @@ snapshots:
   interface-blockstore@5.3.2:
     dependencies:
       interface-store: 6.0.3
-      multiformats: 13.4.1
+      multiformats: 13.4.2
 
   interface-datastore@8.3.2:
     dependencies:
