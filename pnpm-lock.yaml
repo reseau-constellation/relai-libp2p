@@ -31,7 +31,7 @@ importers:
         version: 3.2.24
       '@libp2p/crypto':
         specifier: ^5.1.13
-        version: 5.1.17
+        version: 5.1.18
       '@libp2p/dcutr':
         specifier: ^2.0.38
         version: 2.0.38
@@ -210,6 +210,10 @@ packages:
     resolution: {integrity: sha512-T1NCJqT/j9+cn8fvkt7jtwbLBfLC/1y1c7NtCeXFRgzGTsafi68MRv8yzkYSapBnFA6L3U2VSc02ciDzoAJhJg==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/compat-data@7.29.3':
+    resolution: {integrity: sha512-LIVqM46zQWZhj17qA8wb4nW/ixr2y1Nw+r1etiAWgRM6U1IqP+LNhL1yg440jYZR72jCWcWbLWzIosH+uP1fqg==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/core@7.29.0':
     resolution: {integrity: sha512-CGOfOJqWjg2qW/Mb6zNsDm+u5vFQ8DxXfbM09z69p5Z6+mE1ikP2jUXw+j42Pf1XTYED2Rni5f95npYeuwMDQA==}
     engines: {node: '>=6.9.0'}
@@ -228,6 +232,12 @@ packages:
 
   '@babel/helper-create-class-features-plugin@7.28.6':
     resolution: {integrity: sha512-dTOdvsjnG3xNT9Y0AUg1wAl38y+4Rl4sf9caSQZOXdNqVn+H+HbbJ4IyyHaIqNR6SW9oJpA/RuRjsjCw2IdIow==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/helper-create-class-features-plugin@7.29.3':
+    resolution: {integrity: sha512-RpLYy2sb51oNLjuu1iD3bwBqCBWUzjO0ocp+iaCP/lJtb2CPLcnC2Fftw+4sAzaMELGeWTgExSKADbdo0GFVzA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -311,6 +321,11 @@ packages:
 
   '@babel/parser@7.29.2':
     resolution: {integrity: sha512-4GgRzy/+fsBa72/RZVJmGKPmZu9Byn8o4MoLpmNe1m8ZfYnz5emHLQz3U4gLud6Zwl0RZIcgiLD7Uq7ySFuDLA==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
+  '@babel/parser@7.29.3':
+    resolution: {integrity: sha512-b3ctpQwp+PROvU/cttc4OYl4MzfJUWy6FZg+PMXfzmt/+39iHVF0sDfqay8TQM3JA2EUOyKcFZt75jWriQijsA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -668,8 +683,8 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@babel/plugin-transform-modules-systemjs@7.29.0':
-    resolution: {integrity: sha512-PrujnVFbOdUpw4UHiVwKvKRLMMic8+eC0CuNlxjsyZUiBjhFdPsewdXCkveh2KqBA9/waD0W1b4hXSOBQJezpQ==}
+  '@babel/plugin-transform-modules-systemjs@7.29.4':
+    resolution: {integrity: sha512-N7QmZ0xRZfjHOfZeQLJjwgX2zS9pdGHSVl/cjSGlo4dXMqvurfxXDMKY4RqEKzPozV78VMcd0lxyG13mlbKc4w==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -889,8 +904,8 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@babel/register@7.28.6':
-    resolution: {integrity: sha512-pgcbbEl/dWQYb6L6Yew6F94rdwygfuv+vJ/tXfwIOYAfPB6TNWpXUMEtEq3YuTeHRdvMIhvz13bkT9CNaS+wqA==}
+  '@babel/register@7.29.3':
+    resolution: {integrity: sha512-F6C1KpIdoImKQfsD6HSxZ+mS4YY/2Q+JsqrmTC5ApVkTR2rG+nnbpjhWwzA5bDNu8mJjB3AryqDaWFLd4gCbJQ==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -1718,8 +1733,8 @@ packages:
   '@libp2p/circuit-relay-v2@3.2.24':
     resolution: {integrity: sha512-JXSm0dOOpPC+Yax0ngLYWqELHLFmaYPNZOhZkrr0iEtbiXwhDXuDuwT71pwmozp7h/rYd2YFoIk178AhZ4711Q==}
 
-  '@libp2p/crypto@5.1.17':
-    resolution: {integrity: sha512-gzn9b3tX9D5xCiXb36PF0rH16kGkLW5ESbT+nmXKUp1HCDD30RXQT/oHSylz5I3GN39BC1C3hBOBNaIQYuO+qw==}
+  '@libp2p/crypto@5.1.18':
+    resolution: {integrity: sha512-sCm+dFFZmH4LJIHTCzPy7+EBRhzkndFUcIU8bui6iaxK6SDSRVa11+/O6DzW8hn/U9LgDXe6jXnzWM8bM7OoCA==}
 
   '@libp2p/dcutr@2.0.38':
     resolution: {integrity: sha512-Ny3yA/BqtmRrPIiWjobduccZrUCP+H0HD+2x83wO723iCqBYIMN8Usa5arLTu+TUiMTbxtlWHYaZxGHqfKqn9Q==}
@@ -1803,8 +1818,8 @@ packages:
   '@multiformats/multiaddr@12.5.1':
     resolution: {integrity: sha512-+DDlr9LIRUS8KncI1TX/FfUn8F2dl6BIxJgshS/yFQCNB5IAF0OGzcwB39g5NLE22s4qqDePv0Qof6HdpJ/4aQ==}
 
-  '@multiformats/multiaddr@13.0.1':
-    resolution: {integrity: sha512-XToN915cnfr6Lr9EdGWakGJbPT0ghpg/850HvdC+zFX8XvpLZElwa8synCiwa8TuvKNnny6m8j8NVBNCxhIO3g==}
+  '@multiformats/multiaddr@13.0.3':
+    resolution: {integrity: sha512-mEqqJ4r3a/uuFMTpRkU316wGNIDQNhuVWpm+ebKTQeYsfv9jXbPONWM6VVnj3KGUrwfsX7GZOyp4TFqEA2SPCw==}
 
   '@napi-rs/wasm-runtime@0.2.12':
     resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
@@ -2275,6 +2290,9 @@ packages:
 
   '@types/node@24.12.2':
     resolution: {integrity: sha512-A1sre26ke7HDIuY/M23nd9gfB+nrmhtYyMINbjI1zHJxYteKR6qSMX56FsmjMcDb3SMcjJg5BiRRgOCC/yBD0g==}
+
+  '@types/node@24.12.4':
+    resolution: {integrity: sha512-GUUEShf+PBCGW2KaXwcIt3Yk+e3pkKwWKb9GSyM9WQVE+ep2jzmHdGsHzu4wgcZy5fN9FBdVzjpBQsYlpfpgLA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -4275,8 +4293,8 @@ packages:
   flow-enums-runtime@0.0.6:
     resolution: {integrity: sha512-3PYnM29RFXwvAN6Pc/scUfkI7RwhQ/xqyLUyPNlXUp9S40zI8nup9tUSrTLSVnWGBN38FNiGWbwZOB6uR4OGdw==}
 
-  flow-parser@0.309.0:
-    resolution: {integrity: sha512-poYRskeIXiHsE19Fb9sRE/CV7PYOq21j3lS5vKr27ujFBvSAhmCbbilAonJ0/u0Uai+Xgyq30/twHQeQc2Ngiw==}
+  flow-parser@0.314.0:
+    resolution: {integrity: sha512-ayvpVFL/wibphkhjaz6PwL/F+Vz9lZB7qwFIHvsFiPQMfKmrqRXp1UyJgxMqyanW6QQDvsB12MLWFCc2cYBOtw==}
     engines: {node: '>=0.4.0'}
 
   follow-redirects@1.16.0:
@@ -6045,6 +6063,9 @@ packages:
   multiformats@13.4.2:
     resolution: {integrity: sha512-eh6eHCrRi1+POZ3dA+Dq1C6jhP1GNtr9CRINMb67OKzqW9I5DUuZM/3jLPlzhgpGeiNUlEGEbkCYChXMCc/8DQ==}
 
+  multiformats@14.0.0:
+    resolution: {integrity: sha512-iWK1RrAS58p2NDfeZFuSUSv3ZPewTIhsGbh/5NgeGGJwJmRljLxGtjRR3nkn+loG3zl+IrfR/W1590QnrSK+Gg==}
+
   multimatch@5.0.0:
     resolution: {integrity: sha512-ypMKuglUrZUD99Tk2bUQ+xNQj43lPEfAeX2o9cTteAmShXy2VHDJpuwu1o0xqoKCt9jLVAvwyFKdLTPXKAfJyA==}
     engines: {node: '>=10'}
@@ -6809,8 +6830,8 @@ packages:
   protons-runtime@5.6.0:
     resolution: {integrity: sha512-/Kde+sB9DsMFrddJT/UZWe6XqvL7SL5dbag/DBCElFKhkwDj7XKt53S+mzLyaDP5OqS0wXjV5SA572uWDaT0Hg==}
 
-  protons-runtime@6.0.1:
-    resolution: {integrity: sha512-ONL+jDj143WA1m+WKLuuqBIaDKxm32dx6HfJdyujrRcni/6KkhXzVnyg22nH/Wwqmbwnd1BKUVkD1hMEWZFeww==}
+  protons-runtime@6.0.2:
+    resolution: {integrity: sha512-hiyjyANwGcgmzc+tXc1/ZcSZhKnl5MDjaVNWkISHBgadaU0sjTgKIKZMZ62d9J9zlSTyKHCs/osPkQ/3Z+7yeA==}
 
   proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
@@ -7245,6 +7266,11 @@ packages:
 
   semver@7.7.4:
     resolution: {integrity: sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
+  semver@7.8.0:
+    resolution: {integrity: sha512-AcM7dV/5ul4EekoQ29Agm5vri8JNqRyj39o0qpX6vDF2GZrtutZl5RwgD1XnZjiTAfncsJhMI48QQH3sN87YNA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -7699,8 +7725,8 @@ packages:
     resolution: {integrity: sha512-d79HhZya5Djd7am0q+W4RTsSU+D/aJzM+4Y4AGJGuGlgM2L6sx5ZvOYTmZjqPhrDrV6xJTtRSm1JCLj6V6LHLQ==}
     engines: {node: '>=14.16'}
 
-  terser@5.46.1:
-    resolution: {integrity: sha512-vzCjQO/rgUuK9sf8VJZvjqiqiHFaZLnOiimmUuOKODxWL8mm/xua7viT7aqX7dgPY60otQjUotzFMmCB4VdmqQ==}
+  terser@5.47.1:
+    resolution: {integrity: sha512-tPbLXTI6ohPASb/1YViL428oEHu6/qv1OxqYnfaonVCFHqx4+wCd95pHrQWsL5X4pl90CTyW9piSAsS2L0VoMw==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -7996,14 +8022,26 @@ packages:
   uint8-varint@2.0.4:
     resolution: {integrity: sha512-FwpTa7ZGA/f/EssWAb5/YV6pHgVF1fViKdW8cWaEarjB8t7NyofSWBdOTyFPaGuUG4gx3v1O3PQ8etsiOs3lcw==}
 
+  uint8-varint@2.0.5:
+    resolution: {integrity: sha512-jeFLbL/x30wBRnWjKE1qVBXeumG46r7XmYkpis955lTQ+blccGKFrOsSMHlxePwYB1pI7L8YPHz1t4jLxEs3nA==}
+
+  uint8-varint@3.0.0:
+    resolution: {integrity: sha512-S4DdpXBaLwKcFo7f0bWzWfHjbZ/i3QhM842qn+ZvHjxqFCfUcEB9SQNcmI69S+zMlcmIcKxsk9Iyw77S2Kxv6Q==}
+
   uint8arraylist@2.4.8:
     resolution: {integrity: sha512-vc1PlGOzglLF0eae1M8mLRTBivsvrGsdmJ5RbK3e+QRvRLOZfZhQROTwH/OfyF3+ZVUg9/8hE8bmKP2CvP9quQ==}
 
   uint8arraylist@2.4.9:
     resolution: {integrity: sha512-KxWjyEFzchzik3aoQlK66oaoxIReoMo5bQRm1fcjBUZvE8xv/tyR3CTKhjh6K/faV8VaF6hd5pjr45CzbwuwkA==}
 
+  uint8arraylist@3.0.2:
+    resolution: {integrity: sha512-LDVoq9BQaGJzGDUovEnoX6rpKCvnY/Jbtws4ikwnBzjRbq5qBAFpBZevUEbSmMM87aO0Sp+wOZy2ZXf5yODmXQ==}
+
   uint8arrays@5.1.1:
     resolution: {integrity: sha512-9muQwa4wZG4dKi9gMAIBtnk2Pw87SRpvWTH6lOGm19V2Uqxr4uomUf2PGqPnWc+qs06sN8owUU4jfcoWOcfwVQ==}
+
+  uint8arrays@6.1.1:
+    resolution: {integrity: sha512-iz7JN0XCSZYA111lhFG2Ui9EhFvTNekqSRHw3lvMHq+dzwWy1OQftxFQREEh4rffU0oSoXdQHsk2TiHKVm4fsA==}
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
@@ -8143,6 +8181,7 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -8436,6 +8475,8 @@ snapshots:
 
   '@babel/compat-data@7.29.0': {}
 
+  '@babel/compat-data@7.29.3': {}
+
   '@babel/core@7.29.0':
     dependencies:
       '@babel/code-frame': 7.29.0
@@ -8477,6 +8518,19 @@ snapshots:
       semver: 6.3.1
 
   '@babel/helper-create-class-features-plugin@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-annotate-as-pure': 7.27.3
+      '@babel/helper-member-expression-to-functions': 7.28.5
+      '@babel/helper-optimise-call-expression': 7.27.1
+      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
+      '@babel/traverse': 7.29.0
+      semver: 6.3.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/helper-create-class-features-plugin@7.29.3(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/helper-annotate-as-pure': 7.27.3
@@ -8587,6 +8641,10 @@ snapshots:
       '@babel/types': 7.29.0
 
   '@babel/parser@7.29.2':
+    dependencies:
+      '@babel/types': 7.29.0
+
+  '@babel/parser@7.29.3':
     dependencies:
       '@babel/types': 7.29.0
 
@@ -8829,7 +8887,7 @@ snapshots:
   '@babel/plugin-transform-class-properties@7.28.6(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
-      '@babel/helper-create-class-features-plugin': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-create-class-features-plugin': 7.29.3(@babel/core@7.29.0)
       '@babel/helper-plugin-utils': 7.28.6
     transitivePeerDependencies:
       - supports-color
@@ -8837,7 +8895,7 @@ snapshots:
   '@babel/plugin-transform-class-static-block@7.28.6(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
-      '@babel/helper-create-class-features-plugin': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-create-class-features-plugin': 7.29.3(@babel/core@7.29.0)
       '@babel/helper-plugin-utils': 7.28.6
     transitivePeerDependencies:
       - supports-color
@@ -8959,7 +9017,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-modules-systemjs@7.29.0(@babel/core@7.29.0)':
+  '@babel/plugin-transform-modules-systemjs@7.29.4(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0)
@@ -9043,7 +9101,7 @@ snapshots:
   '@babel/plugin-transform-private-methods@7.28.6(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
-      '@babel/helper-create-class-features-plugin': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-create-class-features-plugin': 7.29.3(@babel/core@7.29.0)
       '@babel/helper-plugin-utils': 7.28.6
     transitivePeerDependencies:
       - supports-color
@@ -9052,7 +9110,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.29.0
       '@babel/helper-annotate-as-pure': 7.27.3
-      '@babel/helper-create-class-features-plugin': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-create-class-features-plugin': 7.29.3(@babel/core@7.29.0)
       '@babel/helper-plugin-utils': 7.28.6
     transitivePeerDependencies:
       - supports-color
@@ -9180,7 +9238,7 @@ snapshots:
 
   '@babel/preset-env@7.26.0(@babel/core@7.29.0)':
     dependencies:
-      '@babel/compat-data': 7.29.0
+      '@babel/compat-data': 7.29.3
       '@babel/core': 7.29.0
       '@babel/helper-compilation-targets': 7.28.6
       '@babel/helper-plugin-utils': 7.28.6
@@ -9218,7 +9276,7 @@ snapshots:
       '@babel/plugin-transform-member-expression-literals': 7.27.1(@babel/core@7.29.0)
       '@babel/plugin-transform-modules-amd': 7.27.1(@babel/core@7.29.0)
       '@babel/plugin-transform-modules-commonjs': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-transform-modules-systemjs': 7.29.0(@babel/core@7.29.0)
+      '@babel/plugin-transform-modules-systemjs': 7.29.4(@babel/core@7.29.0)
       '@babel/plugin-transform-modules-umd': 7.27.1(@babel/core@7.29.0)
       '@babel/plugin-transform-named-capturing-groups-regex': 7.29.0(@babel/core@7.29.0)
       '@babel/plugin-transform-new-target': 7.27.1(@babel/core@7.29.0)
@@ -9278,7 +9336,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/register@7.28.6(@babel/core@7.29.0)':
+  '@babel/register@7.29.3(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
       clone-deep: 4.0.1
@@ -9322,7 +9380,7 @@ snapshots:
 
   '@chainsafe/libp2p-gossipsub@14.1.2':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/interface-internal': 2.3.19
       '@libp2p/peer-id': 5.1.9
@@ -9341,7 +9399,7 @@ snapshots:
     dependencies:
       '@chainsafe/as-chacha20poly1305': 0.1.0
       '@chainsafe/as-sha256': 1.2.0
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/peer-id': 5.1.9
       '@noble/ciphers': 1.3.0
@@ -10036,14 +10094,14 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       jest-mock: 29.7.0
 
   '@jest/fake-timers@29.7.0':
     dependencies:
       '@jest/types': 29.6.3
       '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
@@ -10077,7 +10135,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -10140,7 +10198,7 @@ snapshots:
 
   '@libp2p/circuit-relay-v2@3.2.24':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/interface-internal': 2.3.19
       '@libp2p/peer-collections': 6.0.35
@@ -10161,13 +10219,13 @@ snapshots:
       uint8arraylist: 2.4.8
       uint8arrays: 5.1.1
 
-  '@libp2p/crypto@5.1.17':
+  '@libp2p/crypto@5.1.18':
     dependencies:
       '@libp2p/interface': 3.2.2
       '@noble/curves': 2.2.0
       '@noble/hashes': 2.2.0
       multiformats: 13.4.2
-      protons-runtime: 6.0.1
+      protons-runtime: 6.0.2
       uint8arraylist: 2.4.9
       uint8arrays: 5.1.1
 
@@ -10185,7 +10243,7 @@ snapshots:
 
   '@libp2p/identify@3.0.39':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/interface-internal': 2.3.19
       '@libp2p/peer-id': 5.1.9
@@ -10222,7 +10280,7 @@ snapshots:
   '@libp2p/interface@3.2.2':
     dependencies:
       '@multiformats/dns': 1.0.13
-      '@multiformats/multiaddr': 13.0.1
+      '@multiformats/multiaddr': 13.0.3
       main-event: 1.0.4
       multiformats: 13.4.2
       progress-events: 1.1.0
@@ -10230,7 +10288,7 @@ snapshots:
 
   '@libp2p/keychain@5.2.9':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/utils': 6.7.2
       '@noble/hashes': 1.8.0
@@ -10256,7 +10314,7 @@ snapshots:
       it-stream-types: 2.0.2
       p-defer: 4.0.1
       race-signal: 1.1.3
-      uint8-varint: 2.0.4
+      uint8-varint: 2.0.5
       uint8arraylist: 2.4.9
       uint8arrays: 5.1.1
 
@@ -10269,14 +10327,14 @@ snapshots:
 
   '@libp2p/peer-id@5.1.9':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       multiformats: 13.4.1
       uint8arrays: 5.1.1
 
   '@libp2p/peer-record@8.0.35':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/peer-id': 5.1.9
       '@libp2p/utils': 6.7.2
@@ -10289,7 +10347,7 @@ snapshots:
 
   '@libp2p/peer-store@11.2.7':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/peer-collections': 6.0.35
       '@libp2p/peer-id': 5.1.9
@@ -10306,7 +10364,7 @@ snapshots:
 
   '@libp2p/ping@2.0.37':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/interface-internal': 2.3.19
       '@multiformats/multiaddr': 12.5.1
@@ -10316,7 +10374,7 @@ snapshots:
 
   '@libp2p/pubsub-peer-discovery@11.0.2':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/interface-internal': 2.3.19
       '@libp2p/peer-id': 5.1.9
@@ -10327,7 +10385,7 @@ snapshots:
 
   '@libp2p/pubsub@10.1.18':
     dependencies:
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/interface-internal': 2.3.19
       '@libp2p/peer-collections': 6.0.35
@@ -10360,7 +10418,7 @@ snapshots:
     dependencies:
       '@chainsafe/is-ip': 2.1.0
       '@chainsafe/netmask': 2.0.0
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/logger': 5.2.0
       '@multiformats/multiaddr': 12.5.1
@@ -10387,7 +10445,7 @@ snapshots:
       '@chainsafe/is-ip': 2.1.0
       '@chainsafe/libp2p-noise': 16.1.5
       '@ipshipyard/node-datachannel': 0.26.6
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/interface-internal': 2.3.19
       '@libp2p/keychain': 5.2.9
@@ -10501,12 +10559,12 @@ snapshots:
       uint8-varint: 2.0.4
       uint8arrays: 5.1.1
 
-  '@multiformats/multiaddr@13.0.1':
+  '@multiformats/multiaddr@13.0.3':
     dependencies:
       '@chainsafe/is-ip': 2.1.0
-      multiformats: 13.4.2
-      uint8-varint: 2.0.4
-      uint8arrays: 5.1.1
+      multiformats: 14.0.0
+      uint8-varint: 3.0.0
+      uint8arrays: 6.1.1
 
   '@napi-rs/wasm-runtime@0.2.12':
     dependencies:
@@ -10792,7 +10850,7 @@ snapshots:
 
   '@react-native/codegen@0.76.1(@babel/preset-env@7.26.0(@babel/core@7.29.0))':
     dependencies:
-      '@babel/parser': 7.29.2
+      '@babel/parser': 7.29.3
       '@babel/preset-env': 7.26.0(@babel/core@7.29.0)
       glob: 7.2.3
       hermes-parser: 0.23.1
@@ -11046,7 +11104,7 @@ snapshots:
 
   '@types/babel__core@7.20.5':
     dependencies:
-      '@babel/parser': 7.29.2
+      '@babel/parser': 7.29.3
       '@babel/types': 7.29.0
       '@types/babel__generator': 7.27.0
       '@types/babel__template': 7.4.4
@@ -11058,7 +11116,7 @@ snapshots:
 
   '@types/babel__template@7.4.4':
     dependencies:
-      '@babel/parser': 7.29.2
+      '@babel/parser': 7.29.3
       '@babel/types': 7.29.0
 
   '@types/babel__traverse@7.28.0':
@@ -11125,7 +11183,7 @@ snapshots:
 
   '@types/graceful-fs@4.1.9':
     dependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
 
   '@types/hast@3.0.4':
     dependencies:
@@ -11167,13 +11225,17 @@ snapshots:
 
   '@types/node-forge@1.3.14':
     dependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
 
   '@types/node@22.19.17':
     dependencies:
       undici-types: 6.21.0
 
   '@types/node@24.12.2':
+    dependencies:
+      undici-types: 7.16.0
+
+  '@types/node@24.12.4':
     dependencies:
       undici-types: 7.16.0
 
@@ -12348,7 +12410,7 @@ snapshots:
 
   chrome-launcher@0.15.2:
     dependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -12357,7 +12419,7 @@ snapshots:
 
   chromium-edge-launcher@0.2.0:
     dependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -13832,7 +13894,7 @@ snapshots:
 
   flow-enums-runtime@0.0.6: {}
 
-  flow-parser@0.309.0: {}
+  flow-parser@0.314.0: {}
 
   follow-redirects@1.16.0: {}
 
@@ -14681,7 +14743,7 @@ snapshots:
   istanbul-lib-instrument@5.2.1:
     dependencies:
       '@babel/core': 7.29.0
-      '@babel/parser': 7.29.2
+      '@babel/parser': 7.29.3
       '@istanbuljs/schema': 0.1.6
       istanbul-lib-coverage: 3.2.2
       semver: 6.3.1
@@ -14882,7 +14944,7 @@ snapshots:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
@@ -14892,7 +14954,7 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
       '@types/graceful-fs': 4.1.9
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -14919,7 +14981,7 @@ snapshots:
   jest-mock@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       jest-util: 29.7.0
 
   jest-regex-util@29.6.3: {}
@@ -14927,7 +14989,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -14944,7 +15006,7 @@ snapshots:
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -14971,7 +15033,7 @@ snapshots:
   jscodeshift@0.14.0(@babel/preset-env@7.26.0(@babel/core@7.29.0)):
     dependencies:
       '@babel/core': 7.29.0
-      '@babel/parser': 7.29.2
+      '@babel/parser': 7.29.3
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.29.0)
       '@babel/plugin-proposal-nullish-coalescing-operator': 7.18.6(@babel/core@7.29.0)
       '@babel/plugin-proposal-optional-chaining': 7.21.0(@babel/core@7.29.0)
@@ -14979,10 +15041,10 @@ snapshots:
       '@babel/preset-env': 7.26.0(@babel/core@7.29.0)
       '@babel/preset-flow': 7.27.1(@babel/core@7.29.0)
       '@babel/preset-typescript': 7.28.5(@babel/core@7.29.0)
-      '@babel/register': 7.28.6(@babel/core@7.29.0)
+      '@babel/register': 7.29.3(@babel/core@7.29.0)
       babel-core: 7.0.0-bridge.0(@babel/core@7.29.0)
       chalk: 4.1.2
-      flow-parser: 0.309.0
+      flow-parser: 0.314.0
       graceful-fs: 4.2.11
       micromatch: 4.0.8
       neo-async: 2.6.2
@@ -15087,7 +15149,7 @@ snapshots:
     dependencies:
       '@chainsafe/is-ip': 2.1.0
       '@chainsafe/netmask': 2.0.0
-      '@libp2p/crypto': 5.1.17
+      '@libp2p/crypto': 5.1.18
       '@libp2p/interface': 2.11.0
       '@libp2p/interface-internal': 2.3.19
       '@libp2p/logger': 5.2.0
@@ -15548,7 +15610,7 @@ snapshots:
   metro-minify-terser@0.81.5:
     dependencies:
       flow-enums-runtime: 0.0.6
-      terser: 5.46.1
+      terser: 5.47.1
 
   metro-react-native-babel-preset@0.64.0(@babel/core@7.29.0):
     dependencies:
@@ -15644,7 +15706,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.29.0
       '@babel/generator': 7.29.1
-      '@babel/parser': 7.29.2
+      '@babel/parser': 7.29.3
       '@babel/types': 7.29.0
       flow-enums-runtime: 0.0.6
       metro: 0.81.5
@@ -15665,7 +15727,7 @@ snapshots:
       '@babel/code-frame': 7.29.0
       '@babel/core': 7.29.0
       '@babel/generator': 7.29.1
-      '@babel/parser': 7.29.2
+      '@babel/parser': 7.29.3
       '@babel/template': 7.28.6
       '@babel/traverse': 7.29.0
       '@babel/types': 7.29.0
@@ -16047,6 +16109,8 @@ snapshots:
   multiformats@13.4.1: {}
 
   multiformats@13.4.2: {}
+
+  multiformats@14.0.0: {}
 
   multimatch@5.0.0:
     dependencies:
@@ -16826,9 +16890,9 @@ snapshots:
       uint8arraylist: 2.4.8
       uint8arrays: 5.1.1
 
-  protons-runtime@6.0.1:
+  protons-runtime@6.0.2:
     dependencies:
-      uint8-varint: 2.0.4
+      uint8-varint: 2.0.5
       uint8arraylist: 2.4.9
       uint8arrays: 5.1.1
 
@@ -16988,7 +17052,7 @@ snapshots:
       react-refresh: 0.14.2
       regenerator-runtime: 0.13.11
       scheduler: 0.24.0-canary-efb381bbf-20230505
-      semver: 7.7.4
+      semver: 7.8.0
       stacktrace-parser: 0.1.11
       whatwg-fetch: 3.6.20
       ws: 6.2.3
@@ -17397,6 +17461,8 @@ snapshots:
   semver@7.7.3: {}
 
   semver@7.7.4: {}
+
+  semver@7.8.0: {}
 
   send@0.19.2:
     dependencies:
@@ -17943,7 +18009,7 @@ snapshots:
       type-fest: 2.19.0
       unique-string: 3.0.0
 
-  terser@5.46.1:
+  terser@5.47.1:
     dependencies:
       '@jridgewell/source-map': 0.3.11
       acorn: 8.16.0
@@ -18269,6 +18335,16 @@ snapshots:
       uint8arraylist: 2.4.9
       uint8arrays: 5.1.1
 
+  uint8-varint@2.0.5:
+    dependencies:
+      uint8arraylist: 2.4.9
+      uint8arrays: 5.1.1
+
+  uint8-varint@3.0.0:
+    dependencies:
+      uint8arraylist: 3.0.2
+      uint8arrays: 6.1.1
+
   uint8arraylist@2.4.8:
     dependencies:
       uint8arrays: 5.1.1
@@ -18277,9 +18353,17 @@ snapshots:
     dependencies:
       uint8arrays: 5.1.1
 
+  uint8arraylist@3.0.2:
+    dependencies:
+      uint8arrays: 6.1.1
+
   uint8arrays@5.1.1:
     dependencies:
       multiformats: 13.4.2
+
+  uint8arrays@6.1.1:
+    dependencies:
+      multiformats: 14.0.0
 
   unbox-primitive@1.1.0:
     dependencies:
