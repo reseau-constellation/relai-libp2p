@@ -1,10 +1,11 @@
-import express, { Request } from "express";
+import express from "express";
+import type { Request } from "express";
 import path from "path";
 import serveStatic from "serve-static";
 import compression from "compression";
 import { logger } from "@libp2p/logger";
-import { créerNœud, obtAdressesNœud } from "../../src/relai.js";
-import { CODE_PRÊT } from "./consts.js";
+import { créerNœud, obtAdressesNœud } from "../../src/relai.ts";
+import { CODE_PRÊT } from "./consts.ts";
 
 const log = logger("relai-libp2p");
 const nœud = await créerNœud({

@@ -9,13 +9,6 @@ node_modules
 /_stockageTemp
 /src/utilsTests/_tempo
 
-.yarn/*
-!.yarn/cache
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
+tsconfig.build.tsbuildinfo
 .env
 .libp2p

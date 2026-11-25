@@ -1,10 +1,10 @@
 import { createLibp2p } from "libp2p";
-import { CANAUX_DÉCOUVERTE_PAIRS_TEST, PORT_SERVEUR_TEST } from "./consts.js";
-import { RelaiTest } from "./relai.js";
-import type { Libp2pTest } from "./types";
+import { CANAUX_DÉCOUVERTE_PAIRS_TEST, PORT_SERVEUR_TEST } from "./consts.ts";
+import { RelaiTest } from "./relai.ts";
+import type { Libp2pTest } from "./types.ts";
 import { bootstrap } from "@libp2p/bootstrap";
 import { pubsubPeerDiscovery } from "@libp2p/pubsub-peer-discovery";
-import { DefaultLibp2pOptions } from "./libp2p.js";
+import { DefaultLibp2pOptions } from "./libp2p.ts";
 
 export const préparerTest = ({
   nPairs,

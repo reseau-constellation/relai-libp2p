@@ -1,7 +1,7 @@
 import axios from "axios";
 import { execaNode } from "execa";
 import type { ResultPromise } from "execa";
-import { CODE_PRÊT } from "./consts.js";
+import { CODE_PRÊT } from "./consts.ts";
 
 export class RelaiTest {
   port: number;

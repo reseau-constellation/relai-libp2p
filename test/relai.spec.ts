@@ -1,15 +1,14 @@
-import { préparerTest, que } from "./utils/index.js";
+import { préparerTest, que } from "./utils/index.ts";
 import { expect } from "aegir/chai";
-import { multiaddr } from "@multiformats/multiaddr";
-import { RelaiTest } from "./utils/relai.js";
+import { RelaiTest } from "./utils/relai.ts";
 import { peerIdFromString } from "@libp2p/peer-id";
-import { CANAUX_DÉCOUVERTE_PAIRS_TEST } from "./utils/consts.js";
+import { CANAUX_DÉCOUVERTE_PAIRS_TEST } from "./utils/consts.ts";
 
 const CANAL_DÉFAUT = "canal défaut";
 
 const obtIdRelai = async (relai: RelaiTest): Promise<string> => {
   const adressesRelai = await relai.adresses();
-  const idRelai = multiaddr(adressesRelai[0]).getPeerId();
+  const idRelai = adressesRelai[0].split("/").slice(-1)[0];
   if (!idRelai) throw new Error();
   return idRelai;
 };

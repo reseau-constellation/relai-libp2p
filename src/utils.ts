@@ -1,4 +1,4 @@
-import { Libp2p, PeerId } from "@libp2p/interface";
+import type { Libp2p, PeerId } from "@libp2p/interface";
 import PQueue from "p-queue";
 import type { GossipSubAvecRPC } from "./types.js";
 import type { GossipSub } from "@libp2p/gossipsub";

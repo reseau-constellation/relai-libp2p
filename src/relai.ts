@@ -1,6 +1,6 @@
 import {
   FaultTolerance,
-  PeerDiscovery,
+  type PeerDiscovery,
   type Libp2p,
   type PrivateKey,
 } from "@libp2p/interface";
