@@ -1,6 +1,7 @@
-import { GossipSub } from "@chainsafe/libp2p-gossipsub";
 import { Libp2p, PeerId } from "@libp2p/interface";
 import PQueue from "p-queue";
+import type { GossipSubAvecRPC } from "./types.js";
+import type { GossipSub } from "@libp2p/gossipsub";
 
 const uniques = <T>(x: T[]): T[] => [...new Set(x)];
 
@@ -11,7 +12,7 @@ export const relayerPubsub = async ({
   nœud: Libp2p<{ pubsub: GossipSub }>;
   toujoursRelayer?: string[];
 }) => {
-  const pubsub = nœud.services.pubsub;
+  const pubsub = nœud.services.pubsub as GossipSubAvecRPC;
 
   const requêtes: { [idPair: string]: Set<string> } = {};
   const queue = new PQueue({ concurrency: 1 });
@@ -37,9 +38,10 @@ export const relayerPubsub = async ({
     delete requêtes[é.detail.toString()];
     queue.add(fFinale);
   };
+
   const handleReceivedRpcAvant = pubsub.handleReceivedRpc.bind(pubsub);
   const handleReceivedRpcAprès = async (
-    ...args: Parameters<GossipSub["handleReceivedRpc"]>
+    ...args: Parameters<GossipSubAvecRPC["handleReceivedRpc"]>
   ) => {
     const [idPair, rpc] = args;
     if (rpc.subscriptions.length) {
@@ -64,15 +66,19 @@ export const relayerPubsub = async ({
     await queue.onIdle();
     return await handleReceivedRpcAvant(...args);
   };
+
   pubsub.handleReceivedRpc = handleReceivedRpcAprès.bind(pubsub);
 
   nœud.addEventListener("peer:disconnect", gérerPairDéconnecté);
 
+  // @ts-expect-error Ces types ne sont pas exportés
   const fonctionStopAvant = pubsub.stop.bind(pubsub);
   const fonctionStopAprès = async () => {
     nœud.removeEventListener("peer:disconnect", gérerPairDéconnecté);
     await queue.onIdle();
     await fonctionStopAvant();
   };
+
+  // @ts-expect-error Ces types ne sont pas exportés
   pubsub.stop = fonctionStopAprès.bind(pubsub.stop);
 };

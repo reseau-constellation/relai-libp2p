@@ -19,7 +19,7 @@ import { bootstrap } from "@libp2p/bootstrap";
 import { pubsubPeerDiscovery } from "@libp2p/pubsub-peer-discovery";
 import { autoNAT } from "@libp2p/autonat";
 import { dcutr } from "@libp2p/dcutr";
-import { type GossipSub, gossipsub } from "@chainsafe/libp2p-gossipsub";
+import { gossipsub } from "@libp2p/gossipsub";
 import { tcp } from "@libp2p/tcp";
 import { ping } from "@libp2p/ping";
 import { keys } from "@libp2p/crypto";
@@ -30,7 +30,6 @@ import {
   toString as uint8ArrayToString,
 } from "uint8arrays";
 import fs from "fs";
-import { createPeerScoreParams } from "@chainsafe/libp2p-gossipsub/score";
 import { FsDatastore } from "datastore-fs";
 import { relayerPubsub } from "./utils.js";
 import { CANAUX_DÉCOUVERTE_PAIRS } from "./const.js";
@@ -151,18 +150,18 @@ export const créerNœud = async ({
       autoNAT: autoNAT(),
       dcutr: dcutr(),
       pubsub: gossipsub({
-        // D: 0,
-        // Dlo: 0,
-        // Dhi: 0,
-        // Dout: 0,
-        // doPX: true,
+        D: 0,
+        Dlo: 0,
+        Dhi: 0,
+        Dout: 0,
+        doPX: true,
         ignoreDuplicatePublishError: true,
         allowPublishToZeroTopicPeers: true,
         runOnLimitedConnection: true,
         canRelayMessage: true,
-        scoreParams: createPeerScoreParams({
-          IPColocationFactorWeight: 0,
-        }),
+        scoreParams: {
+          IPColocationFactorThreshold: Infinity,
+        },
       }),
       relay: circuitRelayServer({
         reservations: {
@@ -176,7 +175,7 @@ export const créerNœud = async ({
   });
 
   await relayerPubsub({
-    nœud: nœud as Libp2p<typeof nœud.services & { pubsub: GossipSub }>,
+    nœud,
     toujoursRelayer: canauxDéfaut,
   });
 
