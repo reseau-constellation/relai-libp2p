@@ -4,7 +4,7 @@
     "rootDir": "./src",
     "declaration": true,
     "esModuleInterop": true,
-    "incremental": true,
+    "incremental": false,
     "importHelpers": true,
     "jsx": "react",
     "lib": ["dom", "esnext"],

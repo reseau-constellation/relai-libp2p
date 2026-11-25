@@ -38,19 +38,13 @@ https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-20-04
 
-// pm2 start pnpm --name serveur  -- lancer
 
-```lancer.sh
-#!/bin/bash
 
-cd ~/relai-libp2p
-pnpm lancer
-```
-nvm use stable
+sudo mkdir -p /var/www/relai-ws-libp2p.xn--rseau-constellation-bzb.ca/html
+sudo chown -R $USER:$USER /var/www/relai-ws-libp2p.xn--rseau-constellation-bzb.ca/html
+sudo chmod -R 755 /var/www/relai-ws-libp2p.xn--rseau-constellation-bzb.ca
 
-pm2 start lancer.sh --name serveur
-
-/etc/nginx/sites-available/MON_DOMAINE
+/etc/nginx/sites-available/relai-ws-libp2p.xn--rseau-constellation-bzb.ca
 ```
 server {
         server_name relai-ws-libp2p.xn--rseau-constellation-bzb.ca;
@@ -103,3 +97,52 @@ server {
 }
 
 ```
+
+sudo ln -s /etc/nginx/sites-available/xn--rseau-constellation-bzb.ca /etc/nginx/sites-enabled/
+
+sudo nano /etc/nginx/nginx.conf
+ -> server_names_hash_bucket_size 64;
+
+sudo nginx -t
+
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d relai-ws-libp2p.xn--rseau-constellation-bzb.ca
+
+
+cd ~
+curl -sL https://deb.nodesource.com/setup_26.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
+node -v
+npm -v
+sudo apt install build-essential
+
+curl -fsSL https://get.pnpm.io | sh -
+source /home/jma/.bashrc
+
+git clone https://github.com/reseau-constellation/relai-libp2p.git
+cd relai-libp2p
+pnpm i
+
+sudo npm install -g pm2
+pm2 start pnpm --name "relai" -- lancer
+
+pm2 startup systemd
+pm2 save
+
+systemctl status pm2-jma
+
+
+
+// pm2 start pnpm --name serveur  -- lancer
+
+```lancer.sh
+#!/bin/bash
+
+cd ~/relai-libp2p
+pnpm lancer
+```
+nvm use stable
+
+pm2 start lancer.sh --name serveur
+pm2 monit
