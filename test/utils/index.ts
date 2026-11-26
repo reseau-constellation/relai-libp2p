@@ -6,11 +6,17 @@ import { bootstrap } from "@libp2p/bootstrap";
 import { pubsubPeerDiscovery } from "@libp2p/pubsub-peer-discovery";
 import { DefaultLibp2pOptions } from "./libp2p.ts";
 
+export type ComposantesTestRelai = {
+  pairs: Libp2pTest[];
+  relai: RelaiTest;
+  fermer: () => Promise<void>;
+};
+
 export const préparerTest = ({
   nPairs,
 }: {
   nPairs: number;
-}): { pairs: Libp2pTest[]; relai: RelaiTest; fermer: () => Promise<void> } => {
+}): ComposantesTestRelai => {
   const fermer = async () => {
     const { pairs, relai } = composantes;
     await Promise.all(pairs.map((p) => p.stop()));
@@ -48,11 +54,11 @@ export const préparerTest = ({
           }),
         ],
       });
-      pair.addEventListener("peer:discovery", (p) => {
+      pair.addEventListener("peer:discovery", async (p) => {
         try {
-          pair.dial(p.detail.multiaddrs);
-        } catch {
-          // rien à faire
+          await pair.dial(p.detail.id);
+        } catch (e) {
+          console.log("Erreur connexion pairs : ", e);
         }
       });
       composantes.pairs.push(pair);
@@ -66,19 +72,29 @@ export const préparerTest = ({
   return composantes;
 };
 
-export const que = <T>(
+export const que = async <T>(
   f: () => T | Promise<T>,
   condition: (arg: T) => boolean,
+  t = 50,
 ): Promise<T> => {
-  return new Promise((résoudre) => {
-    const vérifier = async () => {
-      const x = await f();
-      if (condition(x)) {
-        clearTimeout(crono);
-        résoudre(x);
+  let chrono: ReturnType<typeof setTimeout> | undefined = undefined;
+  return new Promise<T>((résoudre, rejeter) => {
+    const fFinale = async () => {
+      try {
+        const retour = await f();
+
+        if (condition(retour)) {
+          clearTimeout(chrono);
+          résoudre(retour);
+        } else {
+          t *= 1.5;
+          chrono = setTimeout(fFinale, t);
+        }
+      } catch (e) {
+        clearTimeout(chrono);
+        rejeter(e);
       }
     };
-    const crono = setInterval(vérifier, 100);
-    vérifier();
+    fFinale();
   });
 };

@@ -1,7 +1,6 @@
 import { préparerTest, que } from "./utils/index.ts";
 import { expect } from "aegir/chai";
 import { RelaiTest } from "./utils/relai.ts";
-import { peerIdFromString } from "@libp2p/peer-id";
 import { CANAUX_DÉCOUVERTE_PAIRS_TEST } from "./utils/consts.ts";
 
 const CANAL_DÉFAUT = "canal défaut";
@@ -30,7 +29,7 @@ describe("Relai", function () {
     expect(connexionsPairs[1].map((p) => p.toString())).to.include(idRelai);
   });
 
-  it("Connexions entre pairs", async () => {
+  it("connexions entre pairs", async () => {
     const idsPairs = composantes.pairs.map((p) => p.peerId.toString());
     const pairs1 = await que(
       () => composantes.pairs[0].getPeers(),
@@ -44,8 +43,9 @@ describe("Relai", function () {
     expect(pairs1.map((p) => p.toString())).to.include(idsPairs[1]);
     expect(pairs2.map((p) => p.toString())).to.include(idsPairs[0]);
   });
+
   describe("Pubsub", function () {
-    it("Relai automatiquement abonné aux sujets", async () => {
+    it("relai automatiquement abonné aux sujets", async () => {
       const abonnementsAvant = await composantes.relai.abonnements();
       composantes.pairs[0].services.pubsub.subscribe("canal test");
       const abonnements = await que(
@@ -55,7 +55,7 @@ describe("Relai", function () {
       expect(abonnements).to.include("canal test");
     });
 
-    it("Messages pubsub passent même si relai non explicitement abonné", async () => {
+    it("messages pubsub passent même si relai non explicitement abonné", async () => {
       let résultat: string | undefined = undefined;
       composantes.pairs[1].services.pubsub.addEventListener("message", (é) => {
         if (é.detail.topic === "canal test") {
@@ -78,7 +78,7 @@ describe("Relai", function () {
       expect(reçu).to.equal("message test");
     });
 
-    it("Relai automatiquement désabonné s'il n'y a plus de pairs abonnés", async () => {
+    it("relai automatiquement désabonné s'il n'y a plus de pairs abonnés", async () => {
       composantes.pairs[0].services.pubsub.unsubscribe("canal test");
       composantes.pairs[1].services.pubsub.unsubscribe("canal test");
       const abonnements = await que(
@@ -88,24 +88,27 @@ describe("Relai", function () {
       expect(abonnements).to.not.include("canal test");
     });
 
-    it("Relai automatiquement désabonné si pairs abonnés sont déconnectés", async () => {
-      composantes.pairs[0].services.pubsub.subscribe("canal test");
+    it("relai automatiquement désabonné si pairs abonnés sont déconnectés", async () => {
+      const CANAL_TEST = "canal test";
+
+      composantes.pairs[0].services.pubsub.subscribe(CANAL_TEST);
       const abonnements = await que(
         () => composantes.relai.abonnements(),
-        (a) => a.includes("canal test"),
+        (a) => a.includes(CANAL_TEST),
       );
-      expect(abonnements).to.include("canal test");
+      expect(abonnements).to.include(CANAL_TEST);
 
-      const idRelai = await obtIdRelai(composantes.relai);
-      await composantes.pairs[0].hangUp(peerIdFromString(idRelai));
+      await composantes.pairs[0].stop();
 
-      const abonnements2 = await que(
+      const abonnementsAprèsDéconnexion = await que(
         () => composantes.relai.abonnements(),
-        (a) => !a.includes("canal test"),
+        (a) => !a.includes(CANAL_TEST),
       );
-      expect(abonnements2).to.not.include("canal test");
+      expect(abonnementsAprèsDéconnexion).to.not.include(CANAL_TEST);
+      await composantes.pairs[0].start();
     });
-    it("Relai désabonné si pair désabonné", async () => {
+
+    it("relai désabonné si pair désabonné", async () => {
       composantes.pairs[0].services.pubsub.subscribe("canal test");
       await que(
         () => composantes.relai.abonnements(),
@@ -121,7 +124,8 @@ describe("Relai", function () {
         CANAL_DÉFAUT,
       ]);
     });
-    it("Multiples sujets par pair", async () => {
+
+    it("multiples sujets par pair", async () => {
       composantes.pairs[0].services.pubsub.subscribe("canal test");
       await que(
         () => composantes.relai.abonnements(),
@@ -152,7 +156,7 @@ describe("Relai", function () {
         "canal test 2",
       ]);
     });
-    it("Relai toujours abonné aux sujets par défaut", async () => {
+    it("relai toujours abonné aux sujets par défaut", async () => {
       expect(await composantes.relai.abonnements()).to.include(CANAL_DÉFAUT);
     });
   });
