@@ -11,8 +11,8 @@
   },
   "scripts": {
     "nettoyer": "rimraf dist",
-    "compiler": "pnpm versioner && pnpm formatter && pnpm nettoyer && pnpm tspc -p tsconfig.json",
-    "compiler:prod": "pnpm versioner && pnpm formatter && pnpm nettoyer && pnpm tspc -p tsconfig.build.json",
+    "compiler": "pnpm versioner && pnpm nettoyer && pnpm tspc -p tsconfig.json",
+    "compiler:prod": "pnpm versioner && pnpm nettoyer && pnpm tspc -p tsconfig.build.json",
     "test": "pnpm compiler && pnpm aegir test -t node --cov",
     "test:navig": "pnpm compiler && pnpm aegir test -t browser --cov",
     "formatter": "pnpm prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\" && pnpm eslint",
