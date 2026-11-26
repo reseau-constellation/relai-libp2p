@@ -17,7 +17,7 @@
     "test:navig": "pnpm compiler && pnpm aegir test -t browser --cov",
     "formatter": "pnpm prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\" && pnpm eslint",
     "versioner": "pnpm genversion  --es6 --semi src/version.ts",
-    "lancer": "pnpm compiler:prod && touch .env && node --env-file=.env dist/serveur.js",
+    "lancer": "pnpm compiler && touch .env && node --env-file=.env dist/serveur.js",
     "effacer-pairs": "rimraf .libp2p"
   },
   "watch": {
