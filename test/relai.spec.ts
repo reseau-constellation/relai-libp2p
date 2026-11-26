@@ -1,11 +1,11 @@
 import { préparerTest, que } from "./utils/index.ts";
 import { expect } from "aegir/chai";
-import { RelaiTest } from "./utils/relai.ts";
+import type { CommunicationRelaiTest } from "./utils/communicationRelai.ts";
 import { CANAUX_DÉCOUVERTE_PAIRS_TEST } from "./utils/consts.ts";
 
 const CANAL_DÉFAUT = "canal défaut";
 
-const obtIdRelai = async (relai: RelaiTest): Promise<string> => {
+const obtIdRelai = async (relai: CommunicationRelaiTest): Promise<string> => {
   const adressesRelai = await relai.adresses();
   const idRelai = adressesRelai[0].split("/").slice(-1)[0];
   if (!idRelai) throw new Error();

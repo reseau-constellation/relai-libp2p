@@ -32,7 +32,7 @@ import {
 import fs from "fs";
 import { FsDatastore } from "datastore-fs";
 import { relayerPubsub } from "./utils.js";
-import { CANAUX_DÉCOUVERTE_PAIRS } from "./const.js";
+import { CANAUX_DÉCOUVERTE_PAIRS, PORT_LIBP2P_DÉFAUT } from "./const.js";
 
 const bootstrapList = process.env.RELAY_BOOTSTRAP_LIST?.split(",");
 
@@ -72,10 +72,12 @@ export const créerNœud = async ({
   canauxDéfaut,
   canauxDécouvertePairs,
   journal,
+  port = PORT_LIBP2P_DÉFAUT,
 }: {
   canauxDéfaut?: string[];
   canauxDécouvertePairs?: string[];
   journal?: (msg: string) => void;
+  port?: number;
 } = {}) => {
   canauxDéfaut = canauxDéfaut ?? ["réseau-constellation"];
   journal = journal ?? console.log;
@@ -107,7 +109,7 @@ export const créerNœud = async ({
     privateKey: clefPrivée,
     addresses: {
       listen: [
-        "/ip4/0.0.0.0/tcp/12345/ws",
+        `/ip4/0.0.0.0/tcp/${port}/ws`,
         "/webrtc",
         "/webtransport",
         "/p2p-circuit",
@@ -211,15 +213,7 @@ export const créerNœud = async ({
   return nœud;
 };
 
-export const obtAdressesNœud = (
-  nœud: Libp2p,
-  journal?: (msg: string) => void,
-): string[] => {
-  journal = journal ?? console.log;
-  journal(`Nœud lancé avec id : ${nœud.peerId.toString()}`);
-  journal(
-    "Le nœud écoute sur : " + nœud.getMultiaddrs().map((ma) => ma.toString()),
-  );
+export const obtAdressesNœud = (nœud: Libp2p): string[] => {
   return nœud.getMultiaddrs().map((ma) => ma.toString());
-  // génère une adresse de manière déterministe : /ip4/127.0.0.1/tcp/12345/ws/p2p/12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE
+  // génère une adresse de manière déterministe, par exemple : /ip4/127.0.0.1/tcp/12345/ws/p2p/12D3KooWAJjbRkp8FPF5MKgMU53aUTxWkqvDrs4zc1VMbwRwfsbE
 };

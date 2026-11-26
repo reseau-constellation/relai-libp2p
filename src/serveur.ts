@@ -5,8 +5,9 @@ import compression from "compression";
 
 import { créerNœud, obtAdressesNœud } from "./relai.js";
 
-const nœud = await créerNœud();
-const adresses = obtAdressesNœud(nœud);
+const nœud = await créerNœud({
+  port: process.env.PORT_LIBP2P ? Number(process.env.PORT_LIBP2P) : undefined,
+});
 
 const app = express();
 
@@ -22,8 +23,9 @@ app.get("/", (_request, response) => {
   response.sendFile(path.join("src", "index.html"), { root: "." });
 });
 app.get("/adresses", async (_request, response) => {
+  const adresses = obtAdressesNœud(nœud);
   response.send(adresses);
 });
 
-const port = process.env.PORT || 8000;
+const port = Number(process.env.PORT ?? 8000);
 app.listen(port);

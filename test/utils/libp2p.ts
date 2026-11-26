@@ -25,3 +25,22 @@ export const DefaultLibp2pOptions: Libp2pOptions<{
     pubsub: gossipsub({ allowPublishToZeroTopicPeers: true }),
   },
 };
+
+export const DefaultBrowserLibp2pOptions: Libp2pOptions<{
+  identify: Identify;
+  pubsub: GossipSub;
+}> = {
+  addresses: {
+    listen: ["/webrtc", "/p2p-circuit"],
+  },
+  transports: [webSockets(), webRTC(), circuitRelayTransport()],
+  connectionEncrypters: [noise()],
+  streamMuxers: [yamux()],
+  connectionGater: {
+    denyDialMultiaddr: () => false,
+  },
+  services: {
+    identify: identify(),
+    pubsub: gossipsub({ allowPublishToZeroTopicPeers: true }),
+  },
+};

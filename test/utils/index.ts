@@ -1,14 +1,16 @@
 import { createLibp2p } from "libp2p";
-import { CANAUX_DÉCOUVERTE_PAIRS_TEST, PORT_SERVEUR_TEST } from "./consts.ts";
-import { RelaiTest } from "./relai.ts";
+import { CANAUX_DÉCOUVERTE_PAIRS_TEST } from "./consts.ts";
+import { CommunicationRelaiTest } from "./communicationRelai.ts";
 import type { Libp2pTest } from "./types.ts";
 import { bootstrap } from "@libp2p/bootstrap";
 import { pubsubPeerDiscovery } from "@libp2p/pubsub-peer-discovery";
-import { DefaultLibp2pOptions } from "./libp2p.ts";
+import { DefaultBrowserLibp2pOptions, DefaultLibp2pOptions } from "./libp2p.ts";
+import { PORT_SERVEUR_DÉFAUT } from "../../src/const.ts";
+import { isBrowser } from "wherearewe";
 
 export type ComposantesTestRelai = {
   pairs: Libp2pTest[];
-  relai: RelaiTest;
+  relai: CommunicationRelaiTest;
   fermer: () => Promise<void>;
 };
 
@@ -18,30 +20,22 @@ export const préparerTest = ({
   nPairs: number;
 }): ComposantesTestRelai => {
   const fermer = async () => {
-    const { pairs, relai } = composantes;
+    const { pairs } = composantes;
     await Promise.all(pairs.map((p) => p.stop()));
-    await relai.fermer();
   };
 
-  const composantes: {
-    pairs: Libp2pTest[];
-    relai: RelaiTest;
-    fermer: () => Promise<void>;
-  } = {
+  const composantes: ComposantesTestRelai = {
     pairs: [],
-    relai: new RelaiTest({
-      port: Number(PORT_SERVEUR_TEST),
-      canauxDéfaut: ["canal défaut"],
-      canauxDécouvertePairs: CANAUX_DÉCOUVERTE_PAIRS_TEST,
+    relai: new CommunicationRelaiTest({
+      portServeur: PORT_SERVEUR_DÉFAUT,
     }),
     fermer,
   };
 
   before(async () => {
-    await composantes.relai.lancer();
     for (const _ of Array(nPairs)) {
       const pair = await createLibp2p({
-        ...DefaultLibp2pOptions,
+        ...(isBrowser ? DefaultBrowserLibp2pOptions : DefaultLibp2pOptions),
         peerDiscovery: [
           bootstrap({
             list: await composantes.relai.adresses(),
@@ -58,7 +52,7 @@ export const préparerTest = ({
         try {
           await pair.dial(p.detail.id);
         } catch (e) {
-          console.log("Erreur connexion pairs : ", e);
+          console.log("Erreur connexion pairs : ", e, p.detail);
         }
       });
       composantes.pairs.push(pair);
