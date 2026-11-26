@@ -40,6 +40,11 @@ export class RelaiTest {
         CANAUX_DÉCOUVERTE_PAIRS: JSON.stringify(this.canauxDécouvertePairs),
       },
     })`./dist/test/utils/binRelai.js`;
+
+    this.processus.catch((e) => {
+      if (!e.toString().includes("SIGTERM")) throw e;
+    });
+
     const promessePrêt = new Promise<void>((résoudre) => {
       this.processus!.stdout?.on("data", (d) => {
         if (d.toString().includes(CODE_PRÊT)) résoudre();
