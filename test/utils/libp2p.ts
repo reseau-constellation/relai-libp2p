@@ -1,8 +1,4 @@
-import {
-  gossipsub,
-  type GossipSubComponents,
-  type GossipSub,
-} from "@libp2p/gossipsub";
+import { gossipsub, type GossipSub } from "@libp2p/gossipsub";
 import { noise } from "@chainsafe/libp2p-noise";
 import { yamux } from "@chainsafe/libp2p-yamux";
 import { circuitRelayTransport } from "@libp2p/circuit-relay-v2";
@@ -26,8 +22,6 @@ export const DefaultLibp2pOptions: Libp2pOptions<{
   },
   services: {
     identify: identify(),
-    pubsub: gossipsub({ allowPublishToZeroTopicPeers: true }) as (
-      components: GossipSubComponents,
-    ) => GossipSub, // Erreur de type dans @chainsafe/pubsub
+    pubsub: gossipsub({ allowPublishToZeroTopicPeers: true }),
   },
 };
