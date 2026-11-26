@@ -22,7 +22,7 @@ jobs:
           version: latest
 
       - name: Ouvrir la branche
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Installer
         run: pnpm install --lockfile=false
