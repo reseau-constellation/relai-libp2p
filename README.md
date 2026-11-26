@@ -1,6 +1,8 @@
 # Relai libp2p
 Ce code vous permet de lancer votre propre nœud de relai libp2p pour vos applications basées sur SFIP ou OrbitDB.
 
+[![Tests relai](https://github.com/reseau-constellation/relai-libp2p/actions/workflows/test.yml/badge.svg)](https://github.com/reseau-constellation/relai-libp2p/actions/workflows/test.yml)
+
 ## Installation
 En premier lieu, fourchez ce projet et installez-le localement :
 
