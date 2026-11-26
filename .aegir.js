@@ -1,3 +1,3 @@
 import { générerConfigÆgir } from "./dist/test/utils/ConfigÆgir.js";
 
-export default générerConfigÆgir();
+export default await générerConfigÆgir();
